@@ -1,0 +1,52 @@
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('../../../assets/img/login-image.jpg');">
+        
+        <div class="filter"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+                      <div class="card card-register">
+                          <h3 class="title">Grupo 3</h3>
+                          <div class="social-line text-center">
+                              <a href="#login" class="btn btn-neutral btn-facebook btn-just-icon">
+                                  <em class="fa fa-facebook-square"></em>
+                              </a>
+                              <a href="#login" class="btn btn-neutral btn-google btn-just-icon">
+                                  <em class="fa fa-google-plus"></em>
+                              </a>
+                              <a href="#login" class="btn btn-neutral btn-twitter btn-just-icon">
+                                  <em class="fa fa-twitter"></em>
+                              </a>
+                          </div>
+                          <form class="register-form">
+                              <label>Correo Electronico </label>
+                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <em class="nc-icon nc-email-85"></em>
+                                  </span>
+                                </div>
+
+                                  <input type="text" class="form-control" placeholder="Correo Electronico" (focus)="focus=true" (blur)="focus=false" >
+                              </div>
+
+                              <label>Contraseña </label>
+                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+                                <div class="input-group-prepend">
+                                  <span class="input-group-text">
+                                      <em class="nc-icon nc-key-25"></em>
+                                  </span>
+                                </div>
+                                  <input type="text" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" >
+                              </div>
+                              <button class="btn btn-danger btn-block btn-round">Iniciar</button>
+                          </form>
+                      </div>
+                    </div>
+                </div>
+                <div class="footer register-footer text-center">
+                    <h6>&copy;{{test | date: 'yyyy'}}, made with <em class="fa fa-heart heart"></em> by Grupo 3 AYD1</h6>
+                </div>
+            </div>
+    </div>
+</div>

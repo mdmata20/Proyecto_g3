@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand" href="#login">Home</a>
+            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse"
+                data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                aria-label="Toggle navigation" (click)="sidebarToggle()">
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom"
+                        href="https://twitter.com/CreativeTim" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                        <p class="d-lg-none">Twitter</p>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom"
+                        href="https://www.facebook.com/CreativeTim" target="_blank">
+                        <i class="fa fa-facebook-square"></i>
+                        <p class="d-lg-none">Facebook</p>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom"
+                        href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
+                        <i class="fa fa-instagram"></i>
+                        <p class="d-lg-none">Instagram</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="wrapper">
+    <div class="page-header page-header-xs" data-parallax="true"
+        style="background-image: url('./assets/img/fabio-mangione.jpg');">
+        <div class="filter"></div>
+    </div>
+    <div class="container tim-container">
+        <div id="images">
+            <div class="container">
+                <div class="row">
+                    <div class="tim-title">
+                        <h3>Peliculas </h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6  col-sm-3 col-md-2 offset-md-1">
+                        <h4 class="images-title">Categoria </h4>
+                        <img src="assets/img/faces/clem-onojeghuo-3.jpg" class="img-thumbnail img-responsive"
+                            alt="Rounded Image">
+
+                        <a href="#0" class="btn btn-link btn-danger">Nombre Pelicula</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { RegistroUsuarioService } from '../../Servicios/registro-usuario.service';
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -7,9 +9,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor() { }
+  focus: any;
+  focus1: any ;
+
+  usuario={//es un objeto
+    nombres:"",
+    apellidos:"",
+    usuario:"",
+    edad:0,
+    dpi:0,
+    correo:"",
+    contrasena:""    
+    
+  }
+
+  constructor(private registrarservice: RegistroUsuarioService) { }
 
   ngOnInit(): void {
+  }
+
+  RegistroUsuario(){
+
+    this.registrarservice.registrar_usuario(this.usuario.nombres,this.usuario.apellidos,
+      this.usuario.usuario,this.usuario.edad,this.usuario.dpi,this.usuario.correo,this.usuario.contrasena)
+      
+      .subscribe(
+        res=>{
+          console.log(res);
+        },
+        err =>{
+          console.log(err);
+        }
+      )
+
   }
 
 }

@@ -9,6 +9,9 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { HomeComponent } from './components/home/home.component';
 import { PagoPeliculasComponent } from './components/pago-peliculas/pago-peliculas.component';
 
+import {FormsModule} from '@angular/forms'
+import {HttpClient, HttpClientModule } from '@angular/common/http'//se importo tambien, no venia por defecto , para la comunicacion con la api
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +23,9 @@ import { PagoPeliculasComponent } from './components/pago-peliculas/pago-pelicul
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule//se importo , no venia por defecto
   ],
   providers: [],
   bootstrap: [AppComponent]

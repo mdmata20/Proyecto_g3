@@ -1,1 +1,80 @@
-<p>registro works!</p>
+
+
+<div class="wrapper">
+  <div class="page-header" style="background-image: url('../../../assets/img/login-image.jpg');">
+      
+      <div class="filter"></div>
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-4 col-sm-6 mr-auto ml-auto">
+                    <div class="card card-register">
+                        <h3 class="title">Registro de Usuario</h3>
+                        
+                        <form (submit)="RegistroUsuario()" >
+                           
+                          <label>Nombres</label>
+                          <div class="form-group">
+                            <input type="text" [(ngModel)]="usuario.nombres" name="nombres" class="form-control" placeholder="Nombre" required autofocus>
+                          </div>
+                          <!--<label>Nombres</label>
+                            <div  class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <em class="nc-icon nc-single-02"></em>
+                                </span>
+                              </div>
+                             
+                              <input type="text" [(ngModel)]="usuario.nombres" name="nombre" class="form-control" placeholder="Nombre" required autofocus>
+                            </div>-->
+
+                          
+                            <label>Apellidos</label>
+                            <div class="form-group">
+                              <input type="text" [(ngModel)]="usuario.apellidos" name="apellidos" class="form-control" placeholder="Apellidos" required autofocus>
+                            </div>
+
+                            <label>Usuario</label>
+                            <div class="form-group">
+                              <input type="text" [(ngModel)]="usuario.usuario" name="usuario" class="form-control" placeholder="Usuario" required autofocus>
+                            </div>
+
+                          
+                            <label>Edad</label>
+                            <div class="form-group">
+                              <input type="number" [(ngModel)]="usuario.edad" name="edad" class="form-control" placeholder="Edad" required autofocus>
+                            </div>
+
+
+                            <label>DPI</label>
+                            <div class="form-group">
+                              <input type="number" [(ngModel)]="usuario.dpi" name="dpi" class="form-control" placeholder="DPI" required autofocus>
+                            </div>
+
+                          
+                            <label>Correo</label>
+                            <div class="form-group">
+                              <input type="text" [(ngModel)]="usuario.correo" name="correo" class="form-control" placeholder="Correo" required autofocus>
+                            </div>
+
+                            <label>Contraseña</label>
+                            <div class="form-group">
+                              <input type="password" [(ngModel)]="usuario.contrasena" name="contraseña" class="form-control" placeholder="Contraseña" required autofocus>
+                            </div>
+
+                           
+
+
+
+
+                            <button class="btn btn-danger btn-block btn-round">Registrar</button>
+
+                        </form>
+
+                    </div>
+                  </div>
+              </div>
+             
+          </div>
+  </div>
+</div>
+

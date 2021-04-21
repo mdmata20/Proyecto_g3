@@ -8,6 +8,7 @@ const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const UsuarioRoutes_1 = __importDefault(require("./routes/UsuarioRoutes"));
+const CatalogoRoutes_1 = __importDefault(require("./routes/CatalogoRoutes"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -24,6 +25,8 @@ class Server {
     routes() {
         this.app.use('/', indexRoutes_1.default);
         this.app.use('/BlockBusted/usuario', UsuarioRoutes_1.default);
+        this.app.use('/BlockBusted/Catalogo', CatalogoRoutes_1.default);
+        this.app.use('/my-json-server.typicode.com/CoffeePaw/AyD1API/Movie', CatalogoRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

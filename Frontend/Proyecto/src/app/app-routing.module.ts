@@ -5,10 +5,14 @@ import { LoginComponent } from "../app/components/login/login.component";
 import { HomeComponent } from "../app/components/home/home.component";
 import { RegistroComponent } from "../app/components/registro/registro.component";
 import { PagoPeliculasComponent } from "../app/components/pago-peliculas/pago-peliculas.component";
+import { AgregarPeliculasComponent } from './components/agregar-peliculas/agregar-peliculas.component';
+import { CatalogoComponent } from './components/catalogo/catalogo.component';
 const routes: Routes = [
   {
     path: "",
-    component: LoginComponent
+    component: LoginComponent,
+    pathMatch: 'full'
+
     
   },
   {
@@ -25,6 +29,12 @@ const routes: Routes = [
   },{
     path: "pagopeliculas",
     component: PagoPeliculasComponent
+  },{
+    path: 'AgregarPeliculas',
+    component: AgregarPeliculasComponent
+  },{
+    path: 'Catalogo',
+    component: CatalogoComponent
   }
 ];
 

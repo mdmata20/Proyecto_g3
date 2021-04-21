@@ -4,6 +4,8 @@ import cors from 'cors';
 
 import indexRoutes from './routes/indexRoutes';
 import UsuarioRoutes from './routes/UsuarioRoutes';
+import catalogoController from './Controller/CatalogoController';
+import CatalogoRoutes from './routes/CatalogoRoutes';
 
 class Server {
 
@@ -26,7 +28,9 @@ class Server {
 
     routes(): void {
         this.app.use('/',indexRoutes);
-        this.app.use('/BlockBusted/usuario',UsuarioRoutes); 
+        this.app.use('/BlockBusted/usuario',UsuarioRoutes);
+        this.app.use('/BlockBusted/Catalogo',CatalogoRoutes);
+        this.app.use('/my-json-server.typicode.com/CoffeePaw/AyD1API/Movie',CatalogoRoutes);
     }
 
     start(): void {

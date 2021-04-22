@@ -1,6 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-
-import { CatalogoService  } from '../../servicese/catalogo.service';
+import { Router } from '@angular/router';
+import { CatalogoService } from '../../servicese/catalogo.service';
+import { AquilerService } from '../../Servicios/aquiler.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -12,12 +13,17 @@ export class CatalogoComponent implements OnInit {
   @HostBinding('class') classes = 'row';
 
   catalogo: any = [];
+  alphaString: string = "";
 
-  constructor(private catalogoServices: CatalogoService) {
+  alquileres:number[] = [];
+
+  constructor(private registraralquiler: AquilerService, private catalogoServices: CatalogoService,  public router: Router) {
     /*this.catalogoServices.getCatalogo1().subscribe(resp =>{
       console.log(resp)
     })*/
     this.catalogo = [];
+    this.alquileres = [];
+    this.alphaString = this.randomString(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
    }
 
   ngOnInit(): void {
@@ -45,6 +51,7 @@ export class CatalogoComponent implements OnInit {
           if(!exist)
           {
             let temporalsito = {
+              id: element.id_Movie,
               name: element.name,
               availabilities: element.Plan,
               languages: element.descripcion,
@@ -59,6 +66,83 @@ export class CatalogoComponent implements OnInit {
       },  
       err => console.error(err)
     )
+
+    this.checksessionStorage();
+  }
+
+  checksessionStorage(){
+    if(sessionStorage.getItem('id_usuario') == null){ // dashboard atleta
+      this.router.navigateByUrl('/login');
+    }
+  }
+
+  alquilarMovie(id: string,event: any) {
+    console.log(sessionStorage.getItem('id_usuario'));
+    console.log(this.alphaString);
+    event.target.hidden = true;
+    event.explicitOriginalTarget.nextSibling.hidden = false;
+    this.alquileres.push(Number(id));
+
+    console.log(this.alquileres)
+  }
+
+  noAlquilarMovie(id: string,event: any) {
+    console.log(sessionStorage.getItem('id_usuario'));
+    console.log(this.alphaString);
+    event.target.hidden = true;
+    event.explicitOriginalTarget.previousSibling.hidden = false;
+
+    for( var i = 0; i < this.alquileres.length; i++){ 
+                                   
+      if ( this.alquileres[i].toString() === id) { 
+          this.alquileres.splice(i, 1); 
+          i--; 
+      }
+    }
+
+    console.log(this.alquileres)
+  }
+
+  randomString(length:number, chars: string) {
+    var result = '';
+    for (var i = length; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+    return result;
+  }
+
+  almacenarDatos(){
+
+    this.registraralquiler.registrar_alquiler(this.alphaString, Number(sessionStorage.getItem('id_usuario')))
+    .subscribe(
+      res=>{
+        console.log(res);
+      },
+      err =>{
+        console.log(err);
+      }
+    )
+
+    for (let index = 0; index < this.alquileres.length; index++) {
+      const element = this.alquileres[index];
+      this.registraralquiler.registrar_pelicula(this.alphaString, element)
+      .subscribe(
+        res=>{
+          console.log(res);
+        },
+        err =>{
+          console.log(err);
+        }
+      )
+
+      this.registraralquiler.desabilitar_pelicula(element)
+      .subscribe(
+        res=>{
+          console.log(res);
+        },
+        err =>{
+          console.log(err);
+        }
+      )
+    }
   }
 
 }

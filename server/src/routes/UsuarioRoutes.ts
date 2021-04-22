@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import UsuarioController from '../Controller/UsuarioController';
 
+
 class UsuarioRoutes {
     public router: Router = Router();
 
@@ -12,6 +13,7 @@ class UsuarioRoutes {
     config(): void{
         this.router.get('/', UsuarioController.index);
         this.router.post('/', UsuarioController.create);
+        this.router.post('/login', UsuarioController.login);
         
     }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +11,19 @@ export class HomeComponent implements OnInit {
   private toggleButton: any;
   private sidebarVisible: boolean;
 
-  constructor(public location: Location, private element : ElementRef) { 
+  constructor(public location: Location, private element : ElementRef,  public router: Router) { 
     this.sidebarVisible = false;
   }
 
   ngOnInit(): void {
     const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+      this.checksessionStorage();
+  }
+  checksessionStorage(){
+    if(sessionStorage.getItem('email') == null){ // dashboard atleta
+      this.router.navigateByUrl('/login');
+    }
   }
   sidebarOpen() {
     const toggleButton = this.toggleButton;

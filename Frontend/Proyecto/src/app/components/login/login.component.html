@@ -18,7 +18,7 @@
                                   <em class="fa fa-twitter"></em>
                               </a>
                           </div>
-                          <form class="register-form">
+                          <form class="register-form" >
                               <label>Correo Electronico </label>
                               <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                                 <div class="input-group-prepend">
@@ -27,7 +27,7 @@
                                   </span>
                                 </div>
 
-                                  <input type="text" class="form-control" placeholder="Correo Electronico" (focus)="focus=true" (blur)="focus=false" >
+                                  <input type="text" class="form-control" placeholder="Correo Electronico" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="email" name="email">
                               </div>
 
                               <label>Contraseña </label>
@@ -37,9 +37,9 @@
                                       <em class="nc-icon nc-key-25"></em>
                                   </span>
                                 </div>
-                                  <input type="text" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" >
+                                  <input type="text" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" [(ngModel)]="password" name="password">
                               </div>
-                              <button class="btn btn-danger btn-block btn-round">Iniciar</button>
+                              <button class="btn btn-danger btn-block btn-round"  (click)="login()">Iniciar</button>
                           </form>
                       </div>
                     </div>

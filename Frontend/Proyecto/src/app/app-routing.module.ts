@@ -9,11 +9,9 @@ import { AgregarPeliculasComponent } from './components/agregar-peliculas/agrega
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 const routes: Routes = [
   {
-    path: "",
-    component: LoginComponent,
-    pathMatch: 'full'
-
-    
+    pathMatch: 'full',
+    redirectTo: '/login',
+    path: '',
   },
   {
     path: "miperfil",
@@ -35,7 +33,11 @@ const routes: Routes = [
   },{
     path: 'Catalogo',
     component: CatalogoComponent
-  }
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  } ,
 ];
 
 @NgModule({

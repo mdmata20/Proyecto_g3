@@ -16,6 +16,24 @@ const database_1 = __importDefault(require("../database"));
 const ValidarRegistro_1 = __importDefault(require("../Validaciones/ValidarRegistro"));
 //const validar=require('../Validaciones');
 class UsuarioController {
+    login(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { email, password } = req.body;
+            //const login =  await pool.query('SELECT * FROM usuario where Correo=\''+username+'\' AND Contraseña= \'' + password + '\'');
+            const login = yield database_1.default.query('SELECT * FROM usuario where Correo=\'' + email + '\'');
+            console.log(req.body);
+            if (login.length > 0) {
+                const contra = yield database_1.default.query('SELECT * FROM usuario where Correo=\'' + email + '\' AND Contraseña= \'' + password + '\'');
+                if (contra.length > 0) {
+                    return res.status(200).json({ text: 'Sesión Iniciada, Correctamente.', id_usuario: (contra[0]).id_usuario });
+                }
+                else {
+                    return res.status(200).json({ text: 'Contraseña Incorrecta.' });
+                }
+            }
+            res.status(200).json({ text: 'Usuario no encontrado' });
+        });
+    }
     index(req, res) {
         database_1.default.query('DESCRIBE usuario');
         res.json('usuario');

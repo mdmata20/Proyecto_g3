@@ -4,7 +4,7 @@ exports.default = {
     database: {
         host: 'localhost',
         user: 'root',
-        password: '5470',
+        password: '$0y3lm3j0rP',
         database: 'BlockBusted'
     }
 };

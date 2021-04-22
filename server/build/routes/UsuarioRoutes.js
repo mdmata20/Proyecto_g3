@@ -13,6 +13,7 @@ class UsuarioRoutes {
     config() {
         this.router.get('/', UsuarioController_1.default.index);
         this.router.post('/', UsuarioController_1.default.create);
+        this.router.post('/login', UsuarioController_1.default.login);
     }
 }
 const usuarioRoutes = new UsuarioRoutes();

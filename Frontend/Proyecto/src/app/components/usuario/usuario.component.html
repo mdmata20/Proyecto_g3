@@ -1,37 +1,24 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
     <div class="container">
-        <div class="navbar-translate">
-            <a class="navbar-brand" href="#login">Home</a>
-            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
-                <span class="navbar-toggler-bar"></span>
-                <span class="navbar-toggler-bar"></span>
-                <span class="navbar-toggler-bar"></span>
+        <div class="container-fluid">
+            <a  class="navbar-brand" routerLink="/Catalogo">BlockBusted</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
             </button>
-        </div>
-        <div class="navbar-collapse" id="navbarToggler">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
-                        <i class="fa fa-twitter"></i>
-                        <p class="d-lg-none">Twitter</p>
-                    </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" routerLink="/miperfil">Perfil Usuario</a>
                 </li>
-                <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/CreativeTim" target="_blank">
-                        <i class="fa fa-facebook-square"></i>
-                        <p class="d-lg-none">Facebook</p>
-                    </a>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" routerLink="/UsuarioAdmin">Perfil Admin</a>
                 </li>
-                <li class="nav-item" *ngIf="!isDocumentation()">
-                    <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
-                        <i class="fa fa-instagram"></i>
-                        <p class="d-lg-none">Instagram</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+               
+              </ul>
+            </div>
+          </div>
+    </div>    
+  </nav>
 
 
 <div class="wrapper">
@@ -61,9 +48,10 @@
                     <br>
                     <div class="row">
                         <div class="col-lg-6 ml-auto mr-auto text-center">
-                            <button type="button" class="btn btn-primary btn-round">Inventario </button>
+                            <button type="button"  class="btn btn-primary btn-round" routerLink = "/InventarioPelicula">Inventario </button>
                             
                         </div>
+                        
                         <div class="col-lg-6 ml-auto mr-auto text-center">
                             <button type="button" class="btn btn-info btn-round">Transacciones </button>
                             

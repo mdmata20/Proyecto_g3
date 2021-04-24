@@ -16,6 +16,7 @@ class CatalogoRoutes {
         this.router.put('/:id_Movie', CatalogoController.update);
         this.router.delete('/:id_Movie',CatalogoController.delete);
         this.router.post('/', catalogoController.HomeInicio);
+        this.router.get('/:id_usuario',CatalogoController.Inventario);
     }
 }
 

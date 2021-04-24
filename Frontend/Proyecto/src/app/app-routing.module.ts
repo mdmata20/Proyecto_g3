@@ -8,6 +8,7 @@ import { PagoPeliculasComponent } from "../app/components/pago-peliculas/pago-pe
 import { AgregarPeliculasComponent } from './components/agregar-peliculas/agregar-peliculas.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { UsuarioAdminComponent } from './components/usuario-admin/usuario-admin.component';
+import { InventarioPeliculaComponent } from './components/inventario-pelicula/inventario-pelicula.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
     path: 'UsuarioAdmin',
     component: UsuarioAdminComponent
   } ,
+  {
+    path: 'InventarioPelicula',
+    component: InventarioPeliculaComponent
+  }
 
 
 ];

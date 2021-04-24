@@ -38,6 +38,17 @@ export class RegistroUsuarioService {
   }
 
 
+  //es para la parte del admin para ver los detalles de las transacciones
+  Get_DetalleAlquilerPeli(){
+    const url="http://localhost:3000/BlockBusted/DetalleTransaccion/Alquiler";
+    return this.http.get(url);
+  }
+
+  Get_DetallePagoPeli(){
+    const url="http://localhost:3000/BlockBusted/DetalleTransaccion/Pago";
+    return this.http.get(url);
+  }
+
 
 
 }

@@ -8,6 +8,7 @@ import CatalogoRoutes from './routes/CatalogoRoutes';
 import AlquilerRoutes from './routes/AlquilerRoute';
 import catalogoController from './Controller/CatalogoController';
 import login from './routes/UsuarioRoutes'
+import AdminRoutes from './routes/AdminRoutes'
 
 class Server {
 
@@ -36,6 +37,7 @@ class Server {
         this.app.use('/my-json-server.typicode.com/CoffeePaw/AyD1API/Movie',CatalogoRoutes);
         this.app.use('/BlockBusted/Catalogo',CatalogoRoutes);
         this.app.use('/BlockBusted/usuario',UsuarioRoutes);
+        this.app.use('/BlockBusted/DetalleTransaccion',AdminRoutes);
     }
 
     start(): void {

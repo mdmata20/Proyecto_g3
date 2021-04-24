@@ -146,6 +146,20 @@ class CatalogoController {
         res.json({text: 'Update Catalogo de Pelicula'});
     }
 
+    public async Inventario(req: Request, res: Response): Promise<any>{
+        const {id_usuario} = req.params;
+        const inventario = await pool.query('select distinct M.id_Movie, M.name, M.image, M.ChargeRate '+
+        'from Pelicula_Alquilada P '+
+        'inner join Movie M on M.id_Movie = P.movie '+
+        'inner join Alquiler A on A.id_alquiler = P.alquiler '+
+        'inner join Usuario U on U.id_usuario = A.usuario '+
+        'where U.id_usuario = ?',[id_usuario]);
+        if(inventario.length > 0){
+            return res.json(inventario);
+        }
+        res.status(404).json({text: "No se encuentra nada en su inventario"});
+    }
+
     async delete (req: Request, res: Response): Promise<void>{
         const {id_Movie} = req.params;
         await pool.query('DELETE From Movie where id_Movie = ?',[id_Movie]);

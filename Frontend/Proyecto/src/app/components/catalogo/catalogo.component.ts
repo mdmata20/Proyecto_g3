@@ -28,6 +28,7 @@ export class CatalogoComponent implements OnInit {
 
   ngOnInit(): void {
     this.catalogoServices.getCatalogo().subscribe(
+     
       res => {
         let temp: any = res;
         
@@ -64,6 +65,7 @@ export class CatalogoComponent implements OnInit {
         });
         
       },  
+     
       err => console.error(err)
     )
 
@@ -113,9 +115,11 @@ export class CatalogoComponent implements OnInit {
 
     this.registraralquiler.registrar_alquiler(this.alphaString, Number(sessionStorage.getItem('id_usuario')))
     .subscribe(
+     
       res=>{
         console.log(res);
       },
+     
       err =>{
         console.log(err);
       }
@@ -125,9 +129,11 @@ export class CatalogoComponent implements OnInit {
       const element = this.alquileres[index];
       this.registraralquiler.registrar_pelicula(this.alphaString, element, Number(sessionStorage.getItem('id_usuario')))
       .subscribe(
+       
         res=>{
           console.log(res);
         },
+        
         err =>{
           console.log(err);
         }
@@ -135,9 +141,11 @@ export class CatalogoComponent implements OnInit {
 
       this.registraralquiler.desabilitar_pelicula(element)
       .subscribe(
+        
         res=>{
           console.log(res);
         },
+        
         err =>{
           console.log(err);
         }

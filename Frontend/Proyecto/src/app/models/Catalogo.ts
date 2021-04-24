@@ -8,6 +8,13 @@ export interface Catalogo {
     languages?: number;
 }
 
+export interface Pelicula_Alquilada{
+    id_Movie?: number;
+    name?: string;
+    image?: string;
+    ChargeRate?: number;
+}
+
 export interface DetalleAlquilerInterface{//parte del usuario admin
 
     transaccionn: string,

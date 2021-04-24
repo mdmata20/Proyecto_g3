@@ -80,7 +80,7 @@ export class CatalogoComponent implements OnInit {
     console.log(sessionStorage.getItem('id_usuario'));
     console.log(this.alphaString);
     event.target.hidden = true;
-    event.explicitOriginalTarget.nextSibling.hidden = false;
+    event.target.nextSibling.hidden = false;
     this.alquileres.push(Number(id));
 
     console.log(this.alquileres)
@@ -90,7 +90,7 @@ export class CatalogoComponent implements OnInit {
     console.log(sessionStorage.getItem('id_usuario'));
     console.log(this.alphaString);
     event.target.hidden = true;
-    event.explicitOriginalTarget.previousSibling.hidden = false;
+    event.target.previousSibling.hidden = false;
 
     for( var i = 0; i < this.alquileres.length; i++){ 
                                    
@@ -123,7 +123,7 @@ export class CatalogoComponent implements OnInit {
 
     for (let index = 0; index < this.alquileres.length; index++) {
       const element = this.alquileres[index];
-      this.registraralquiler.registrar_pelicula(this.alphaString, element)
+      this.registraralquiler.registrar_pelicula(this.alphaString, element, Number(sessionStorage.getItem('id_usuario')))
       .subscribe(
         res=>{
           console.log(res);

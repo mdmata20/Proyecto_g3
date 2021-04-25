@@ -9,6 +9,7 @@ import AlquilerRoutes from './routes/AlquilerRoute';
 import catalogoController from './Controller/CatalogoController';
 import PagoRoutes from './routes/PagoPeliculasRoutes';
 import login from './routes/UsuarioRoutes'
+import AdminRoutes from './routes/AdminRoutes'
 
 class Server {
 
@@ -38,6 +39,7 @@ class Server {
         this.app.use('/BlockBusted/Catalogo',CatalogoRoutes);
         this.app.use('/BlockBusted/usuario',UsuarioRoutes);
         this.app.use('/BlockBusted/pago',PagoRoutes); 
+        this.app.use('/BlockBusted/DetalleTransaccion',AdminRoutes);
     }
 
     start(): void {

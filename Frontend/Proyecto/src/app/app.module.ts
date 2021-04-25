@@ -12,6 +12,9 @@ import { HomeComponent } from './components/home/home.component';
 import { PagoPeliculasComponent } from './components/pago-peliculas/pago-peliculas.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { AgregarPeliculasComponent } from './components/agregar-peliculas/agregar-peliculas.component';
+import { UsuarioAdminComponent } from './components/usuario-admin/usuario-admin.component';
+import { RegistroUsuarioService } from './Servicios/registro-usuario.service';
+import { InventarioPeliculaComponent } from './components/inventario-pelicula/inventario-pelicula.component';
 
 
 @NgModule({
@@ -23,7 +26,9 @@ import { AgregarPeliculasComponent } from './components/agregar-peliculas/agrega
     HomeComponent,
     PagoPeliculasComponent,
     CatalogoComponent,
-    AgregarPeliculasComponent
+    AgregarPeliculasComponent,
+    UsuarioAdminComponent,
+    InventarioPeliculaComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,7 @@ import { AgregarPeliculasComponent } from './components/agregar-peliculas/agrega
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [RegistroUsuarioService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

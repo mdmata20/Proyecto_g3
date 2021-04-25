@@ -35,10 +35,12 @@ export class RegistroComponent implements OnInit {
       
       .subscribe(
         res=>{
+          alert(" \"MENSAJE\": \n"+" El usuario se registro con exito.")
           console.log(res);
         },
         err =>{
-          console.log(err);
+          alert(" \"DATOS INCORRECTOS\": \n"+" "+err.error.status)
+          console.log("ERROR: ",err.error.status);
         }
       )
 

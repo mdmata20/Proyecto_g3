@@ -34,7 +34,7 @@ export class AquilerService {
  
   }
 
-  registrar_pelicula(alpha:string,pelicula:number){
+  registrar_pelicula(alpha:string,pelicula:number,user:number){
     
     const url="http://localhost:3000/BlockBusted/Alquiler/pelicula";
  
@@ -42,7 +42,8 @@ export class AquilerService {
      url,
      { 
       alquiler:alpha,
-      movie:pelicula 
+      movie:pelicula,
+      usuario_actual:user
      },
      { headers: this.headers }
    ).pipe(map(data => data));

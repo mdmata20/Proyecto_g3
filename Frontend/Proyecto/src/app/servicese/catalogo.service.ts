@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CatalogoService {
+  
 
   API_URL = 'http://localhost:3000/BlockBusted/Catalogo'
 
@@ -41,5 +42,9 @@ export class CatalogoService {
 
   update(id_Movie: string, updateCatalogo: Catalogo): Observable<Catalogo>{
     return this.http.put(`${this.API_URL}/catalogo/${id_Movie}`, updateCatalogo)
+  }
+
+  Inventario(){
+    return this.http.get(`${this.API_URL}/${sessionStorage.getItem('id_usuario')}`)
   }
 }

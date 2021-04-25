@@ -7,6 +7,9 @@ import { RegistroComponent } from "../app/components/registro/registro.component
 import { PagoPeliculasComponent } from "../app/components/pago-peliculas/pago-peliculas.component";
 import { AgregarPeliculasComponent } from './components/agregar-peliculas/agregar-peliculas.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
+import { UsuarioAdminComponent } from './components/usuario-admin/usuario-admin.component';
+import { InventarioPeliculaComponent } from './components/inventario-pelicula/inventario-pelicula.component';
+
 const routes: Routes = [
   {
     pathMatch: 'full',
@@ -38,6 +41,16 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   } ,
+  {
+    path: 'UsuarioAdmin',
+    component: UsuarioAdminComponent
+  } ,
+  {
+    path: 'InventarioPelicula',
+    component: InventarioPeliculaComponent
+  }
+
+
 ];
 
 @NgModule({

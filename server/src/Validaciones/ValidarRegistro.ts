@@ -4,10 +4,10 @@ function validar_registro(data:any){
   const { nombres,apellidos,usuario,edad,dpi,correo,contraseña } = data;
 
  
-   if ( typeof nombres !== "string" || nombres === "" || !(/^[A-Z]+$/i.test(nombres)) ){
+   if ( typeof nombres !== "string" || nombres === "" || !(/^[A-Z]+[A-Z\s]*$/i.test(nombres)) ){
       return "Los nombres no son validos para ser registrado.";
 
-  }else if(typeof apellidos !== "string" || apellidos === "" || !(/^[A-Z]+$/i.test(apellidos))){
+  }else if(typeof apellidos !== "string" || apellidos === "" || !(/^[A-Z]+[A-Z\s]*$/i.test(apellidos))){
       return "Los apellidos no son validos para ser registrado.";
 
   }else if(typeof usuario !== "string" || usuario === "" ){

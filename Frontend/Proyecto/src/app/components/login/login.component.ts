@@ -39,13 +39,17 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem("password",this.password);
         sessionStorage.setItem("id_usuario", data.id_usuario)
         alert(data.text);
-        this.router.navigateByUrl('/ho');
+        this.router.navigateByUrl('/Catalogo');
       }
       else{
         alert(data.text);
       }
         
     });
+  }
+
+  Registro(){
+    this.router.navigateByUrl('/registro');
   }
   
 

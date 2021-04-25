@@ -37,13 +37,14 @@ class CatalogoController {
         let users = [];
         let users1 = [];
         let users2 = [];
-        
-
+        var CambioMoneda;
+    
         request3("https://my-json-server.typicode.com/CoffeePaw/AyD1API/Availability",(err, res1,body)=>{
             if(!err){
                 users1 = JSON.parse(body);
                 users1.forEach(valor1=>{
                     console.log(valor1.id);
+
 
                     try {
                         let Datos_Availability = {
@@ -63,12 +64,13 @@ class CatalogoController {
             }
         });
 
-
+        
         request3("https://my-json-server.typicode.com/CoffeePaw/AyD1API/Language",(err, res1,body)=>{
             if(!err){
                 users2 = JSON.parse(body);
                 users2.forEach(valor2=>{
                     console.log(valor2.id);
+
 
                     try {
                         let Datos_Language = {
@@ -86,7 +88,7 @@ class CatalogoController {
             }
         });
 
-
+        
         request2("https://my-json-server.typicode.com/CoffeePaw/AyD1API/Movie",(err,res1,body)=>{
         if (!err){
             users = JSON.parse(body);
@@ -111,6 +113,7 @@ class CatalogoController {
                             id_Movie: valor.id,
                         }
 
+                       // console.log(LenguajesPeliculas);
                         pool.query('INSERT INTO LenguajesPeliculas SET ?', [LenguajesPeliculas]);
                     })
     
@@ -119,6 +122,7 @@ class CatalogoController {
                             languages: lan,
                             id_Movie: valor.id,
                         }
+                        //console.log(LenguajesAvailabilities);
                         pool.query('INSERT INTO DisponiblesPeliculas SET ?', [LenguajesAvailabilities]);
                     })
                 } catch (error) {
@@ -128,6 +132,7 @@ class CatalogoController {
         }
         });
         
+        
         const CatalogoPeliculas = 
         await pool.query('select distinct M.id_Movie, M.name, M.image, M.ChargeRate, A.name as Plan, L.descripcion '+
         'from Movie M '+
@@ -136,9 +141,23 @@ class CatalogoController {
         'inner join Availabitity A on A.id_availabitity = DP.languages '+
         'inner join Lenguage L on L.id_lenguage = LP.Lenguaje '+
         'where M.active = true;');
+        
+        
+
+        request2('https://my-json-server.typicode.com/CoffeePaw/AyD1API/ExchangeRate', function (error:any, response:any, body: any) {
+            let cambio = JSON.parse(body);
+            let cambio2 ={
+                "total": cambio[0].total
+            }
+            
+            console.log(cambio2);
+            pool.query('INSERT INTO ExchangeRate SET ?', [cambio2]);
+        });
+
         res.json(CatalogoPeliculas).status(200);
 
     }
+
 
     async update (req: Request, res: Response): Promise<void>{
         const {id_Movie} = req.params;

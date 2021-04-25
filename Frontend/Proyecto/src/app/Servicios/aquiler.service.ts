@@ -14,12 +14,15 @@ export class AquilerService {
     "Content-Type":"application/json"//tipo de dato que se va a estar enviando(json)
   })
 
+  Temp_Id_Alquier:string="";
+  Id_Usuario:string ="";
 
 
   registrar_alquiler(alpha:string,user:number){
     
     const url="http://localhost:3000/BlockBusted/Alquiler/alquilar";
  
+    this.Temp_Id_Alquier = alpha;  
     return this.http.post(
      url,
      { 

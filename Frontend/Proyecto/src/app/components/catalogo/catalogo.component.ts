@@ -17,6 +17,8 @@ export class CatalogoComponent implements OnInit {
 
   alquileres:number[] = [];
 
+  ID_ALQUILER:string ="";
+
   constructor(private registraralquiler: AquilerService, private catalogoServices: CatalogoService,  public router: Router) {
     /*this.catalogoServices.getCatalogo1().subscribe(resp =>{
       console.log(resp)
@@ -78,19 +80,23 @@ export class CatalogoComponent implements OnInit {
 
   alquilarMovie(id: string,event: any) {
     console.log(sessionStorage.getItem('id_usuario'));
-    console.log(this.alphaString);
+    this.ID_ALQUILER = this.alphaString;
+    console.log(" -> Este es el id " +this.alphaString);
     event.target.hidden = true;
-    event.explicitOriginalTarget.nextSibling.hidden = false;
+    console.log(event)
+    //event.explicitOriginalTarget.nextSibling.hidden = false;
+    event.target.nextSibling;
     this.alquileres.push(Number(id));
 
-    console.log(this.alquileres)
+    console.log("->"+this.alquileres)
   }
 
   noAlquilarMovie(id: string,event: any) {
     console.log(sessionStorage.getItem('id_usuario'));
     console.log(this.alphaString);
     event.target.hidden = true;
-    event.explicitOriginalTarget.previousSibling.hidden = false;
+    //event.explicitOriginalTarget.previousSibling.hidden = false;
+    event.target.previousSibling;
 
     for( var i = 0; i < this.alquileres.length; i++){ 
                                    
@@ -100,7 +106,7 @@ export class CatalogoComponent implements OnInit {
       }
     }
 
-    console.log(this.alquileres)
+    console.log("-> no laquiler" +this.alquileres)
   }
 
   randomString(length:number, chars: string) {
@@ -114,7 +120,7 @@ export class CatalogoComponent implements OnInit {
     this.registraralquiler.registrar_alquiler(this.alphaString, Number(sessionStorage.getItem('id_usuario')))
     .subscribe(
       res=>{
-        console.log(res);
+        console.log("->aa"+res);
       },
       err =>{
         console.log(err);
@@ -143,6 +149,9 @@ export class CatalogoComponent implements OnInit {
         }
       )
     }
+
+    this.router.navigateByUrl('/pagopeliculas');
   }
+
 
 }

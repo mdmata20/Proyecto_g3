@@ -49,6 +49,30 @@ export class RegistroUsuarioService {
     return this.http.get(url);
   }
 
+  /*return this.Http_pagos.post(this.Api_pagos, {
+    "Id_Usuario": Id_usuario
+  },
+  { headers: this.headers })
+  .pipe(map(data => data));*/
+
+  //es para un usuario unico para ver sus detalles de sus transacciones
+  Get_MiDetalleAlquilerPeli(iduser:any){
+    const url="http://localhost:3000/BlockBusted/MiDetalleTransaccion/MiAlquiler";
+    return this.http.post(url,{
+      "Id_Usuario": iduser
+    },
+    { headers: this.headers }).pipe(map(data => data));
+    
+  }
+
+  Get_MiDetallePagoPeli(iduser:any){
+    const url="http://localhost:3000/BlockBusted/MiDetalleTransaccion/MiPago";
+    return this.http.post(url,{
+      "Id_Usuario": iduser
+    },
+    { headers: this.headers }).pipe(map(data => data));
+
+  }
 
 
 }

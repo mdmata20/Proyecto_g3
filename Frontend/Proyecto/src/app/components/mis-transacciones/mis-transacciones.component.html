@@ -1,0 +1,122 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark text-white">
+  <div class="container">
+      <div class="container-fluid">
+          <a  class="navbar-brand">Mis Transacciones</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+         
+        </div>
+  </div>    
+</nav>
+
+<div class="container p-3" >
+  <div class="card" >
+    <div class="card-header text-center">
+      <h3>DETALLE ALQUILER DE PELICULAS</h3>  
+   </div>
+     
+
+      <div class="card-body"  >
+        
+        <div class="container ">
+
+          <div class="container" style="  height: 400px; overflow-y: scroll;">
+          <table class="table"  >
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">Transaccion</th>
+                  <th scope="col">Nombres</th>
+                  <th scope="col">Apellidos</th>
+                  <th scope="col">DPI</th>
+                  <th scope="col">Correo</th>
+                  <th scope="col">Pelicula</th>
+                  <th scope="col">Precio por dia</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                  
+                <tr *ngFor="let alquiler of AlquileresPeli">
+                  <td> {{alquiler.Transaccion}} </td>
+                  <td> {{alquiler.Nombres}} </td>
+                  <td> {{alquiler.Apellidos}} </td>
+                  <td> {{alquiler.DPI}} </td>
+                  <td> {{alquiler.Correo}} </td>
+                  <td> {{alquiler.name}} </td>
+                  <td> {{alquiler.ChargeRate}} </td>
+                </tr>
+              
+                
+              </tbody>
+            </table>
+          </div>
+          
+          
+          </div>
+
+          
+
+      </div>
+  </div>
+  </div>
+
+
+
+  <div class="container p-3" >
+    <div class="card" >
+      <div class="card-header text-center">
+        <h3>DETALLE PAGO DE PELICULAS</h3>  
+     </div>
+
+     
+       
+       
+        <div class="card-body"  >
+          
+          <div class="container ">
+  
+            <div class="container" style="  height: 400px; overflow-y: scroll;">
+            <table class="table"  >
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col">Transaccion</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">DPI</th>
+                    <th scope="col">Correo</th>
+                    <th scope="col">Pelicula</th>
+                    <th scope="col">Expiracion</th>
+                    <th scope="col">Monto</th>
+                    <th scope="col">Moneda</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                    
+                  <tr *ngFor="let pago of PagosPeli">
+                    <td> {{pago.Transaccion}} </td>
+                    <td> {{pago.Nombres}} </td>
+                    <td> {{pago.Apellidos}} </td>
+                    <td> {{pago.DPI}} </td>
+                    <td> {{pago.Correo}} </td>
+                    <td> {{pago.name}} </td>
+                    <td> {{pago.Fecha_expiracion}} </td>
+                    <td> {{pago.Monto_apagar}} </td>
+                    <td> {{pago.Modena_apagar}} </td>
+                  </tr>
+                
+                  
+                </tbody>
+              </table>
+            </div>
+            
+            
+            </div>
+  
+            
+  
+        </div>
+    </div>
+    </div>

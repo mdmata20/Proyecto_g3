@@ -13,6 +13,7 @@ const AlquilerRoute_1 = __importDefault(require("./routes/AlquilerRoute"));
 const PagoPeliculasRoutes_1 = __importDefault(require("./routes/PagoPeliculasRoutes"));
 const UsuarioRoutes_2 = __importDefault(require("./routes/UsuarioRoutes"));
 const AdminRoutes_1 = __importDefault(require("./routes/AdminRoutes"));
+const MisTransaccionesRoutes_1 = __importDefault(require("./routes/MisTransaccionesRoutes"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -36,6 +37,7 @@ class Server {
         this.app.use('/BlockBusted/usuario', UsuarioRoutes_1.default);
         this.app.use('/BlockBusted/pago', PagoPeliculasRoutes_1.default);
         this.app.use('/BlockBusted/DetalleTransaccion', AdminRoutes_1.default);
+        this.app.use('/BlockBusted/MiDetalleTransaccion', MisTransaccionesRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {

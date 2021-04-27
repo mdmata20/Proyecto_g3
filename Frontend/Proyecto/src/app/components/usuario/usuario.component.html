@@ -38,10 +38,22 @@
                     <div class="row">
                         <div class="col-md-6 ml-auto mr-auto text-center">
                             <h4>Usuario:</h4>
-                            <h4>Nombre:</h4>
-                            <h4>Apellido:</h4>
-                            <h4>Edad:</h4>
+                            <input aria-invalid="false" autocomplete="off" id="txtu" required="" type="text" aria-label="Name" class="MuiInputBase-input MuiInput-input" value="" [(ngModel)]="txtu">
+                            <h4>Correo:</h4>
+                            <input aria-invalid="false" autocomplete="off" id="txtc" required="" type="text" aria-label="Name" class="MuiInputBase-input MuiInput-input" value="" [(ngModel)]="txtc">
+                            <h4>Contraseña:</h4>
+                            <input aria-invalid="false" autocomplete="off" id="txtp" required="" type="password" aria-label="Name" class="MuiInputBase-input MuiInput-input" value="" [(ngModel)]="txtp">
+                            <h4>Nombres:</h4>
+                            <input aria-invalid="false" autocomplete="off" id="txtn" required="" type="text" aria-label="Name" class="MuiInputBase-input MuiInput-input" value="" [(ngModel)]="txtn">
+                            <h4>Apellidos:</h4>
+                            <input aria-invalid="false" autocomplete="off" id="txta" required="" type="text" aria-label="Name" class="MuiInputBase-input MuiInput-input" value="" [(ngModel)]="txta">
                             <h4>DPI:</h4>
+                            <input aria-invalid="false" autocomplete="off" id="txtd" required="" type="text" aria-label="Name" class="MuiInputBase-input MuiInput-input" value="" [(ngModel)]="txtd">
+                            <h4>Edad:</h4>
+                            <input aria-invalid="false" autocomplete="off" id="txte" required="" type="text" aria-label="Name" class="MuiInputBase-input MuiInput-input" value="" [(ngModel)]="txte"> 
+                            <br> 
+                            <br> 
+                            <button type="button"  class="btn btn-primary btn-round" (click)="guardar()">Guardar Cambios </button>                      
                         </div>
                     </div>
                     <br>

@@ -14,7 +14,8 @@ class UsuarioRoutes {
         this.router.get('/', UsuarioController.index);
         this.router.post('/', UsuarioController.create);
         this.router.post('/login', UsuarioController.login);
-        
+        this.router.post('/getuser', UsuarioController.getuser);
+        this.router.post('/updateuser', UsuarioController.updateuser);
     }
 }
 

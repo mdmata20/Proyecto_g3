@@ -34,6 +34,35 @@ class UsuarioController {
             res.status(200).json({ text: 'Usuario no encontrado' });
         });
     }
+    getuser(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id_usuario } = req.body;
+            //const login =  await pool.query('SELECT * FROM usuario where Correo=\''+username+'\' AND Contraseña= \'' + password + '\'');
+            const get_user = yield database_1.default.query("SELECT * FROM usuario where id_usuario=" + id_usuario + ";");
+            if (get_user.length > 0) {
+                return res.status(200).json({ text: 'caracteristicas', usuario: get_user });
+            }
+            else {
+                return res.status(200).json('Usuario No Encontrado.');
+            }
+        });
+    }
+    updateuser(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id_usuario, iusuario, icorreo, ipassword, inombre, iapellido, idpi, iedad } = req.body;
+            //const login =  await pool.query('SELECT * FROM usuario where Correo=\''+username+'\' AND Contraseña= \'' + password + '\'');
+            const update_user = yield database_1.default.query(`UPDATE USUARIO
+        SET Usuario = '${iusuario}', Correo = '${icorreo}', 
+        Contraseña = '${ipassword}', Nombres = '${inombre}', Apellidos = '${iapellido}', 
+        DPI = ${idpi}, Edad = ${iedad} WHERE (id_usuario = ${id_usuario});`);
+            if (update_user.affectedRows == 1) {
+                return res.status(200).json('ok');
+            }
+            else {
+                return res.status(200).json('error');
+            }
+        });
+    }
     index(req, res) {
         database_1.default.query('DESCRIBE usuario');
         res.json('usuario');

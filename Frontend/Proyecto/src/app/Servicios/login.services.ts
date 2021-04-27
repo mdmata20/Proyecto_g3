@@ -12,4 +12,10 @@ export class UsersService {
   login(user: any): Observable<any> {
     return this.http.post("http://localhost:3000/api/login", user);
   }
+  getuser(id_user: any): Observable<any> {
+    return this.http.post("http://localhost:3000/api/getuser", id_user);
+  }
+  updateuser(caracteristicas: any): Observable<any> {
+    return this.http.post("http://localhost:3000/api/updateuser",caracteristicas);
+  }
 }

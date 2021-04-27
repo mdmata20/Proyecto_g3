@@ -22,16 +22,6 @@ class CatalogoController {
         res.json(CatalogoPeliculas).status(200);
     }
 
-    
-
-    public async create (req: Request, res: Response): Promise<void> {
-        console.log(req.body);
-        await pool.query('INSERT INTO Movie set ?', [req.body]);
-        res.json({message: 'Creando un usuario'});
-    }
-
-
-
     public async HomeInicio(req: Request, res: Response): Promise<void>{
 
         let users = [];
@@ -132,7 +122,6 @@ class CatalogoController {
         }
         });
         
-        
         const CatalogoPeliculas = 
         await pool.query('select distinct M.id_Movie, M.name, M.image, M.ChargeRate, A.name as Plan, L.descripcion '+
         'from Movie M '+
@@ -142,8 +131,6 @@ class CatalogoController {
         'inner join Lenguage L on L.id_lenguage = LP.Lenguaje '+
         'where M.active = true;');
         
-        
-
         request2('https://my-json-server.typicode.com/CoffeePaw/AyD1API/ExchangeRate', function (error:any, response:any, body: any) {
             let cambio = JSON.parse(body);
             let cambio2 ={

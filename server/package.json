@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test-code-coverage": "nyc --reporter=text mocha",
+    "test-html": "nyc --reporter=html --reporter=text mocha",
     "build": "tsc -w",
-    "dev": "nodemon build/index.js"
+    "dev": "nodemon build/index.js",
+    "test": "mocha",
+    "coverage": "nyc -x \"**/tests/**\" --reporter=cobertura --reporter=text mocha ./test"
   },
   "keywords": [],
   "author": "",
@@ -14,9 +18,13 @@
     "@types/cors": "^2.8.10",
     "@types/express": "^4.17.11",
     "@types/morgan": "^1.9.2",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "mocha": "^8.3.2",
     "morgan": "^1.10.0",
+    "nyc": "^15.1.0",
     "promise-mysql": "^3.3.1",
     "request": "^2.88.2"
   },

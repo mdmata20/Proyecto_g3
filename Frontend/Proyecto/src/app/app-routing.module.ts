@@ -9,7 +9,7 @@ import { AgregarPeliculasComponent } from './components/agregar-peliculas/agrega
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { UsuarioAdminComponent } from './components/usuario-admin/usuario-admin.component';
 import { InventarioPeliculaComponent } from './components/inventario-pelicula/inventario-pelicula.component';
-
+import { MisTransaccionesComponent } from './components/mis-transacciones/mis-transacciones.component';
 const routes: Routes = [
   {
     pathMatch: 'full',
@@ -48,6 +48,10 @@ const routes: Routes = [
   {
     path: 'InventarioPelicula',
     component: InventarioPeliculaComponent
+  },
+  {
+    path: 'MisTransacciones',
+    component: MisTransaccionesComponent
   }
 
 

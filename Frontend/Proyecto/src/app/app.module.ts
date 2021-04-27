@@ -15,6 +15,7 @@ import { AgregarPeliculasComponent } from './components/agregar-peliculas/agrega
 import { UsuarioAdminComponent } from './components/usuario-admin/usuario-admin.component';
 import { RegistroUsuarioService } from './Servicios/registro-usuario.service';
 import { InventarioPeliculaComponent } from './components/inventario-pelicula/inventario-pelicula.component';
+import { MisTransaccionesComponent } from './components/mis-transacciones/mis-transacciones.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { InventarioPeliculaComponent } from './components/inventario-pelicula/in
     CatalogoComponent,
     AgregarPeliculasComponent,
     UsuarioAdminComponent,
-    InventarioPeliculaComponent
+    InventarioPeliculaComponent,
+    MisTransaccionesComponent
   ],
   imports: [
     BrowserModule,

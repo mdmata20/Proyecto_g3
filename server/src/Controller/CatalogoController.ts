@@ -154,12 +154,12 @@ class CatalogoController {
 
     public async Inventario(req: Request, res: Response): Promise<any>{
         const {id_usuario} = req.params;
-        const inventario = await pool.query('select distinct M.id_Movie, M.name, M.image, M.ChargeRate '+
+        const inventario = await pool.query('select distinct M.id_Movie, M.name, M.image, M.ChargeRate, P.usuario_actual '+
         'from Pelicula_Alquilada P '+
         'inner join Movie M on M.id_Movie = P.movie '+
         'inner join Alquiler A on A.id_alquiler = P.alquiler '+
         'inner join Usuario U on U.id_usuario = A.usuario '+
-        'where U.id_usuario = ?',[id_usuario]);
+        'where P.usuario_actual=?',[id_usuario]);
         if(inventario.length > 0){
             return res.json(inventario);
         }

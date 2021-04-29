@@ -39,6 +39,18 @@ class UsuarioController {
         }
     } 
 
+    public async getusers (req: Request, res: Response) {
+        //const login =  await pool.query('SELECT * FROM usuario where Correo=\''+username+'\' AND Contraseña= \'' + password + '\'');
+        const get_user =  await pool.query("SELECT id_usuario 'ID', Usuario 'USUARIO' FROM Usuario;");
+        if(get_user.length>0)
+        {
+            
+            return res.status(200).json({usuarios: get_user});
+        }else{
+            return res.status(200).json('Usuario No Encontrado.');
+        }
+    } 
+
     
     public async updateuser (req: Request, res: Response) {
         const {id_usuario,iusuario, icorreo, ipassword, inombre, iapellido, idpi, iedad} = req.body;
@@ -47,6 +59,17 @@ class UsuarioController {
         SET Usuario = '${iusuario}', Correo = '${icorreo}', 
         Contraseña = '${ipassword}', Nombres = '${inombre}', Apellidos = '${iapellido}', 
         DPI = ${idpi}, Edad = ${iedad} WHERE (id_usuario = ${id_usuario});`);
+        if(update_user.affectedRows==1)
+        {
+            return res.status(200).json('ok');
+        }else{
+            return res.status(200).json('error');
+        }
+    } 
+
+    public async updatemovie (req: Request, res: Response) {
+        const {new_user,id_pelicula,current_user} = req.body;
+        const update_user =  await pool.query(`UPDATE Pelicula_Alquilada SET usuario_actual = ${new_user} WHERE movie = ${id_pelicula} AND usuario_actual=${current_user};`);
         if(update_user.affectedRows==1)
         {
             return res.status(200).json('ok');

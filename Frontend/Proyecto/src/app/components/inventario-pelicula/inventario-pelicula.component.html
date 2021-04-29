@@ -20,8 +20,8 @@
   </div>    
 </nav>
 
-<div class="container p-4">
-  <div class="col-md-4" *ngFor= "let Catalogo of catalogo">
+<div class="container p-4" id="catalogo">
+  <div class="col-md-4" *ngFor= "let Catalogo of catalogo" id="{{Catalogo.id}}">
     <div class="container p-4">
     <div class="card text-center">
       <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
@@ -33,8 +33,8 @@
       <div class="card-body"></div>
       <img src="{{Catalogo.image}}" class="card-img-top">
       <p>Precio: {{Catalogo.Precio | currency: 'Q. ': 'symbol':'00.00'}}</p>
-      <a  class="btn btn-info btn-block">
-        Tranferir
+      <a class="btn btn-info btn-block" (click)="transferir(Catalogo.id)" id="btnt{{Catalogo.id}}">
+        Tranferir {{Catalogo.usuario_actual}}
       </a>
     </div>
   </div>

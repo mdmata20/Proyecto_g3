@@ -15,7 +15,9 @@ class UsuarioRoutes {
         this.router.post('/', UsuarioController.create);
         this.router.post('/login', UsuarioController.login);
         this.router.post('/getuser', UsuarioController.getuser);
+        this.router.post('/getusers', UsuarioController.getusers);
         this.router.post('/updateuser', UsuarioController.updateuser);
+        this.router.post('/updatemovie', UsuarioController.updatemovie);
     }
 }
 

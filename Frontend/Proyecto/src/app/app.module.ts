@@ -11,7 +11,6 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { HomeComponent } from './components/home/home.component';
 import { PagoPeliculasComponent } from './components/pago-peliculas/pago-peliculas.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
-import { AgregarPeliculasComponent } from './components/agregar-peliculas/agregar-peliculas.component';
 import { UsuarioAdminComponent } from './components/usuario-admin/usuario-admin.component';
 import { RegistroUsuarioService } from './Servicios/registro-usuario.service';
 import { InventarioPeliculaComponent } from './components/inventario-pelicula/inventario-pelicula.component';
@@ -27,7 +26,6 @@ import { MisTransaccionesComponent } from './components/mis-transacciones/mis-tr
     HomeComponent,
     PagoPeliculasComponent,
     CatalogoComponent,
-    AgregarPeliculasComponent,
     UsuarioAdminComponent,
     InventarioPeliculaComponent,
     MisTransaccionesComponent

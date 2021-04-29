@@ -9,6 +9,9 @@ stats.json
 npm-debug.log
 .idea
 build/
+build/*
 server/build/
 server/build
-.scannerwork/
+server/src/keys.ts
+server/build/keys.js
+server/build/*

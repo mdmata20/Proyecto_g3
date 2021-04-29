@@ -18,4 +18,10 @@ export class UsersService {
   updateuser(caracteristicas: any): Observable<any> {
     return this.http.post("http://localhost:3000/api/updateuser",caracteristicas);
   }
+  getusers(): Observable<any> {
+    return this.http.post("http://localhost:3000/api/getusers",[]);
+  }
+  updatemovie(new_alquiler: any): Observable<any> {
+    return this.http.post("http://localhost:3000/api/updatemovie",new_alquiler);
+  }
 }

@@ -11,3 +11,4 @@ npm-debug.log
 build/
 server/build/
 server/build
+.scannerwork/

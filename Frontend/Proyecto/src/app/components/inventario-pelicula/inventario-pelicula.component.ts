@@ -6,6 +6,7 @@ import Swal from'sweetalert2';
 import { UsersService} from '../../Servicios/login.services';
 import { HttpClient  } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-inventario-pelicula',
   templateUrl: './inventario-pelicula.component.html',
@@ -44,6 +45,7 @@ export class InventarioPeliculaComponent implements OnInit {
     );
       this.checksessionStorage();
   }
+
   transferir(id_pelicula: any){
     let contenido;
     var users="{"; 
@@ -93,14 +95,10 @@ export class InventarioPeliculaComponent implements OnInit {
     });
     });
   }
-  public transferencia(){
-
-  }
+  
   checksessionStorage(){
     if(sessionStorage.getItem('id_usuario') == null){ // dashboard atleta
       this.router.navigateByUrl('/login');
     }
   }
-
-
 }

@@ -76,7 +76,7 @@ describe('POST /BlockBusted/Catalogo/', () => {
     it('Insertar bien porque si existen esas peliculas', (done) =>{
         const LenguajePeliculas ={
             Lenguaje: 1,
-            id_Movie: 1,
+            id_Movie: 2,
         }
         chai.request(url)
         .post('')

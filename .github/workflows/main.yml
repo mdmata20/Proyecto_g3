@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Integracion Continua
 
 # Controls when the action will run. 
 on:
@@ -27,12 +27,17 @@ jobs:
         uses: actions/setup-node@v1
         with: 
           node-version: ${{ matrix.node-version }}
-      - run: npm install
+     
+      - run: cd server
+      - run: npm ci
       - run: npm run build
-      env:
-        CI: true
-  windows-build:
+      - run: npm run dev
+      - run: npm run test
+
+  build-windows: 
+    # The type of runner that the job will run on
     runs-on: windows-latest
+
     strategy:
       matrix: 
         node-version: [14.15.4]
@@ -42,12 +47,9 @@ jobs:
         uses: actions/setup-node@v1
         with: 
           node-version: ${{ matrix.node-version }}
-      - run: npm install
+      - run: cd server
+      - run: npm ci
       - run: npm run build
-      env:
-        CI: true
-
-
-      
-      
-
+      - run: npm run dev
+      - run: npm run test
+    

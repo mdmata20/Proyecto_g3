@@ -90,7 +90,7 @@ describe('POST /BlockBusted/Catalogo/', () => {
 
     it('No deberia de insertar un plan ala pelicula porque no existe ese plan', (done) =>{
         const PlanPeliculas ={
-            languages: 2,
+            languages: 1,
             id_Movie: 1,
         }
         chai.request(url)

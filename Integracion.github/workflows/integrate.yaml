@@ -1,0 +1,39 @@
+name: Integracion Continua
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: 14.15.4
+        ng-version: 11.2.6
+
+    steps:
+      - uses: actions/checkout@v2
+        name: set up node ${{ matrix.node-version}}
+      - uses: actions/setup-node@v1
+        with:
+        node-version: ${{matrix.node-version}}
+      -  name: set up ng ${{ matrix.ng-version}}
+        uses: actions/setup-node@v1
+        with:
+        ng-version: ${{matrix.ng-version}}
+        name: Install dependencies
+        run: |
+        npm install
+        npm run build
+        npm run dev
+        npm run test
+        ng serve
+        ng test --code-coverage
+
+      name: Test with npm run test
+      run: |
+        npm run test
+
+      name: Test with ng test --code-coverage
+      run:
+        ng test --code-coverage
+      

@@ -24,9 +24,7 @@ jobs:
       - uses: actions/setup-node@v1
         with: 
           node-version: 14.15.4
-      - uses: actions/setup-ng@v1
-        with:
-          ng-version: 11.2.6
+
       - run: npm ci
       - run: npm install
       - run: npm run build

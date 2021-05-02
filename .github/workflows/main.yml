@@ -68,9 +68,7 @@ jobs:
   deploy-cliente:
 
     runs-on: self-hosted
-
-    image: docker:latest
-
+    
     steps:
       - name: stops
         run: |

@@ -80,7 +80,7 @@ jobs:
         run: |
           docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
           docker pull "mdmata/cliente_app:latest"
-          docker run -d -p 0.0.0.0:80:4200 -name=cliente mdmata/cliente_app:latest
+          docker run -d -p 0.0.0.0:80:4200 --name=cliente mdmata/cliente_app:latest
           docker image prune
           docker logout
 

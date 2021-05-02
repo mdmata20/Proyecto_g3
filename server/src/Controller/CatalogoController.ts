@@ -179,25 +179,25 @@ class CatalogoController {
             }
 
             request2('https://my-json-server.typicode.com/CoffeePaw/AyD1API/ExchangeRate', function (error:any, response:any, body: any) {
-            let cambio = JSON.parse(body);
-            let cambio2 ={
-                "total": cambio[0].total
-            }
-            
-            console.log(cambio2);
-            pool.query('INSERT INTO ExchangeRate SET ?', [cambio2],
-            (err1, res3) => {
-                if (err1) {
-                    console.log("error: ", err1);
-                    res.status(200).json({text: 'Error'});
+                let cambio = JSON.parse(body);
+                let cambio2 ={
+                    "total": cambio[0].total
                 }
+                
+                console.log(cambio2);
+                pool.query('INSERT INTO ExchangeRate SET ?', [cambio2],
+                (err1, res3) => {
+                    if (err1) {
+                        console.log("error: ", err1);
+                        res.status(200).json({text: 'Error'});
+                    }
+                });
             });
+        res.status(200).json(res2);
         });
-        res.json(res2).status(200);
-        });
+    
         
-        
-
+        res.status(200);
         
 
     }

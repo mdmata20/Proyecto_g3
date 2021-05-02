@@ -1,6 +1,6 @@
 FROM node:latest
 WORKDIR /usr/app/back
-COPY package*.json .
+COPY package.json .
 RUN npm install typescript -g
 RUN npm install
 COPY . .

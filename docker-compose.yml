@@ -1,7 +1,7 @@
 version: '2'
 services:
     server:
-        build: .
+        build: ./server
         command: npm run dev
         volumes:
             - .:/usr/app/back

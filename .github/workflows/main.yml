@@ -27,12 +27,7 @@ jobs:
         with: 
           node-version: ${{ matrix.node-version }}
       - name: Intalacion Depencias
-        run: |
-          cd server
-          npm install
-          npm build
-      - name: npm run dev
-        run: |
+          cd PROYECTO_G3
           cd server
           nom i --save-dev typescript
           npm run build

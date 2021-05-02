@@ -17,7 +17,7 @@ jobs:
   # This workflow contains a single job called "build"
   build-server: 
     # The type of runner that the job will run on
-    runs-on: [self-hosted, linux, X64, juancho-1]
+    runs-on: self-hosted
 
     steps:
       - uses: actions/checkout@v2
@@ -34,13 +34,13 @@ jobs:
 
   deploy-server:
       
-    runs-on: [self-hosted, linux, X64, juancho-1]
+    runs-on: self-hosted
     needs: build-server
 
     steps:
       - uses: actions/chekout@v1
       - name: Docker logs
-      run: docker login -u ${{ secrets.DOCKER_USER }} - p ${{ secrets.DOCKER_KEY }}
+        run: docker login -u ${{ secrets.DOCKER_USER }} - p ${{ secrets.DOCKER_KEY }}
       - name: Build
         run: |
         cd server

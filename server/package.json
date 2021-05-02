@@ -9,7 +9,8 @@
     "build": "tsc",
     "dev": "nodemon build/index.js",
     "test": "mocha",
-    "coverage": "nyc -x \"**/tests/**\" --reporter=cobertura --reporter=text mocha ./test"
+    "coverage": "nyc -x \"**/tests/**\" --reporter=cobertura --reporter=text mocha ./test",
+    "start": "node build/index.js"
   },
   "keywords": [],
   "author": "",

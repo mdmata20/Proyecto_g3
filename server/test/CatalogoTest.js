@@ -136,7 +136,7 @@ describe('GET /BlockBusted/Catalogo/:id_usuario', () => {
         chai.request(url)
             .get("" + id_user)
             .end((err,res) => {
-                expect(res).to.have.status(200);
+                expect(res).to.have.status(404);
                 done();
             });
     });

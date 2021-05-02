@@ -30,7 +30,7 @@ jobs:
       - run: cd server
       - run: npm install
       - run: npm test
-      - run: npm build
+
 
 
   

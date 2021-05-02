@@ -8,12 +8,5 @@ services:
             - "3000:3000"
         volumes:
             - .:/usr/app/back
-            - /usr/app/back/node_modules
-        networks: 
-            - networkapi
-
-    networks: 
-        networkapi:
-            driver: "bridge"
-       
+            - /usr/app/back/node_modules       
         

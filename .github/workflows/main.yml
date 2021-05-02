@@ -24,8 +24,7 @@ jobs:
       - name: Intalacion Depencias
         run: |
           cd server
-          npm i --save-dev typescript		
-          npm run build
+          npm i --save-dev typescript	
           npm install
       - name: Test
         run: |

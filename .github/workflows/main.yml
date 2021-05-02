@@ -15,27 +15,46 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build: 
+  build-server: 
     # The type of runner that the job will run on
     runs-on: [self-hosted, linux, X64, juancho-1]
 
-    strategy:
-      matrix: 
-        node-version: [14.15.4]
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{matrix.node-version }}
-        uses: actions/setup-node@v1
-        with: 
-          node-version: ${{ matrix.node-version }}
       - name: Intalacion Depencias
         run: |
           cd server
           npm i --save-dev typescript		
           npm run build
           npm install
-          npm run dev
       - name: Test
         run: |
           cd server
           npm test
+
+  deploy-server:
+      
+    runs-on: [self-hosted, linux, X64, juancho-1]
+    needs: build-server
+
+    steps:
+      - uses: actions/chekout@v1
+      - name: Docker logs
+      run: docker login -u ${{ secrets.DOCKER_USER }} - p ${{ secrets.DOCKER_KEY }}
+      - name: Build
+        run: |
+        cd server
+        docker build -t back .
+      - name: Tags
+        run: |
+        docker tag back ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
+        docker tag back ${{ secrets.DOCKER_USER }}/back:latest
+      - name: push
+        run: |
+        docker push ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
+        docker push ${{ secrets-DOCKER_USER }}/back:latest
+
+
+
+
+

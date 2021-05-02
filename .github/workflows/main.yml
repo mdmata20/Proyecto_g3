@@ -32,6 +32,11 @@ jobs:
           cd server
           npm install
           npm build
+      - name: npm run dev
+        run: |
+          cd server
+          npm cache clean --forve
+          npm install
           npm run dev
       - name: Test
         run: |

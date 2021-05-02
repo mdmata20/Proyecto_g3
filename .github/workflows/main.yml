@@ -17,7 +17,7 @@ jobs:
   # This workflow contains a single job called "build"
   build: 
     # The type of runner that the job will run on
-    runs-on: [sel-hosted, linux, X64, juancho-runner]
+    runs-on: [self-hosted, linux, X64, juancho-1]
 
     strategy:
       matrix: 

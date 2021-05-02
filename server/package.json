@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@actions/github": "^4.0.0",
     "@types/cors": "^2.8.10",
     "@types/express": "^4.17.11",
     "@types/morgan": "^1.9.2",

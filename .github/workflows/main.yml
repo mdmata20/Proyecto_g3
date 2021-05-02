@@ -27,10 +27,15 @@ jobs:
         uses: actions/setup-node@v1
         with: 
           node-version: ${{ matrix.node-version }}
-      - run: cd server
-      - run: npm install
-      - run: npm test
-      - run: npm build
+      - name: Intalacion Depencias
+        run: |
+          cd server
+          npm install
+          npm dev
+      - name: Test
+        run: |
+          cd server
+          npm test
 
 
   

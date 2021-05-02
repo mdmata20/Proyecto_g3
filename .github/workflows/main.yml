@@ -43,16 +43,16 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USER }} - p ${{ secrets.DOCKER_KEY }}
       - name: Build
         run: |
-        cd server
-        docker build -t back .
+          cd server
+          docker build -t back .
       - name: Tags
         run: |
-        docker tag back ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
-        docker tag back ${{ secrets.DOCKER_USER }}/back:latest
+          docker tag back ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
+          docker tag back ${{ secrets.DOCKER_USER }}/back:latest
       - name: push
         run: |
-        docker push ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
-        docker push ${{ secrets-DOCKER_USER }}/back:latest
+          docker push ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
+          docker push ${{ secrets-DOCKER_USER }}/back:latest
 
 
 

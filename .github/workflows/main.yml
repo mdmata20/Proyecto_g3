@@ -26,10 +26,6 @@ jobs:
           cd server
           sudo npm i --save-dev typescript	
           sudo npm install
-      - name: Test
-        run: |
-          cd server
-          sudo npm test
 
   deploy-server:
       

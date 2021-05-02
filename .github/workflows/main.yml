@@ -26,15 +26,21 @@ jobs:
         uses: actions/setup-node@v1
         with: 
           node-version: ${{ matrix.node-version }}
+      - uses: actions/mysql-action@v1.1
+        with:
+          host port: 3306
+          container port: 3306
+          character set server: 'utf8'
+          collation server: 'utf8_general_ci'
+          mysql version: '8.0'
+          mysql database: 'blockbusted'
+          mysql root password: '5470'
+          mysql user: 'root'
+          mysql password: '5470'
       - name: Intalacion Depencias
         run: |
           cd server
-          npm install
-          npm build
-      - name: npm run dev
-        run: |
-          cd server
-          nom i --save-dev typescript
+          npm i --save-dev typescript	
           npm run build
           npm install
           npm run dev
@@ -42,3 +48,4 @@ jobs:
         run: |
           cd server
           npm test
+

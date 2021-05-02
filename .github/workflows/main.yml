@@ -33,7 +33,7 @@ jobs:
     needs: build-server
 
     steps:
-      - uses: actions/chekout@v2
+      - uses: actions/checkout@v2
       - name: Docker logs
         run: docker login -u ${{ secrets.DOCKER_USER }} - p ${{ secrets.DOCKER_KEY }}
       - name: Build

@@ -1,11 +1,19 @@
 version: '2'
 services:
     server:
+        container_name: servidor
+        restart: always
         build: ./server
-        command: npm run dev
+        ports:
+            - "3000:3000"
         volumes:
             - .:/usr/app/back
             - /usr/app/back/node_modules
-        ports:
-            - "3000:3000"
-        restart: on-failure
+        networks: 
+            - networkapi
+
+    networks: 
+        networkapi:
+            driver: "bridge"
+       
+        

@@ -38,10 +38,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Docker logs
         run: docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
-      - name: Build
-        run: |
-          cd server
-          docker build -t back .
+       
       - name: Tags
         run: |
           docker tag back mdmata/back:${{ github.sha }}
@@ -50,6 +47,8 @@ jobs:
         run: |
           docker push mdmata/back:${{ github.sha }}
           docker push mdmata/back:latest
+      - name: Build
+        run: docker-compose -f "docker-compose.yml" up -d --build
 
 
 

@@ -1,8 +1,6 @@
-FROM node:latest
-WORKDIR /opt/back
-COPY . .
+FROM node:12-alpine
+WORKDIR /usr/app/back
+COPY package.json .
 RUN npm install typescript -g
 RUN npm install
-RUN npm run build
-EXPOSE 3000
-CMD ["npm", "start"]
+COPY . .

@@ -31,23 +31,23 @@ jobs:
       
     runs-on: self-hosted
     needs: build-server
-
+    env: # Or as an environment variable
+      USER: ${{ secrets.DOCKER_USER }}
+      PASS: ${{ secrets.DOCKER_KEY }}
     steps:
       - uses: actions/checkout@v2
       - name: Docker logs
-        run: docker login -u ${{ secrets.DOCKER_USER }} - p ${{ secrets.DOCKER_KEY }}
+        run: docker login -u "$USER" - p "$PASS"
       - name: Build
         run: |
           cd server
           docker build -t back .
       - name: Tags
         run: |
-          docker tag back ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
-          docker tag back ${{ secrets.DOCKER_USER }}/back:latest
+          docker tag back "$USER"/back:latest
       - name: push
         run: |
-          docker push ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
-          docker push ${{ secrets.DOCKER_USER }}/back:latest
+          docker push"$USER"/back:latest
 
 
 

@@ -53,7 +53,7 @@ jobs:
   build-cliente:
 
     runs-on: self-hosted
-
+    needs: deploy-server
     steps:
       - uses: actions/checkout@v2
       - name: Intalacion Depencias
@@ -68,7 +68,7 @@ jobs:
   deploy-cliente:
 
     runs-on: self-hosted
-
+    needs: build-cliente
     steps:
       
       - uses: actions/checkout@v2

@@ -68,12 +68,16 @@ jobs:
   deploy-cliente:
 
     runs-on: self-hosted
-    
+
     steps:
+      
+      - uses: actions/checkout@v2
       - name: stops
         run: |
           docker stop cliente_app
           docker rm cliente_app
+      - name: run
+        run: |
           docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
           docker pull "mdmata/cliente_app:latest"
           docker run -d -p 0.0.0.0:80:4200 -name=cliente mdmata/cliente_app:latest

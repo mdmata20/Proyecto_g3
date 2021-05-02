@@ -1,0 +1,11 @@
+version: '2'
+services:
+    server:
+        build: .
+        command: npm run dev
+        volumes:
+            - .:/usr/app/back
+            - /usr/app/back/node_modules
+        ports:
+            - "3000:3000"
+        restart: on-failure

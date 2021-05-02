@@ -37,19 +37,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Docker logs
-        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_KEY }}
+        run: docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
       - name: Build
         run: |
           cd server
           docker build -t back .
       - name: Tags
         run: |
-          docker tag back ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
-          docker tag back ${{ secrets.DOCKER_USER }}/back:latest
+          docker tag back mdmata/back:${{ github.sha }}
+          docker tag back mdmata/back:latest
       - name: push
         run: |
-          docker push ${{ secrets.DOCKER_USER }}/back:${{ github.sha }}
-          docker push ${{ secrets.DOCKER_USER }}/back:latest
+          docker push mdmata/back:${{ github.sha }}
+          docker push mdmata/back:latest
 
 
 

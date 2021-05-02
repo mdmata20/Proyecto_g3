@@ -1,14 +1,25 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const promise_mysql_1 = __importDefault(require("promise-mysql"));
-const keys_1 = __importDefault(require("./keys"));
-const pool = promise_mysql_1.default.createPool(keys_1.default.database);
+const mysql = require('mysql');
+/*
+const pool = mysql.createPool(keys.database);
+
 pool.getConnection()
     .then(connection => {
-    pool.releaseConnection(connection);
-    console.log('DB is connected');
+        pool.releaseConnection(connection)
+        console.log('DB is connected');
+    });*/
+const pool = mysql.createConnection({
+    host: 'donjuancho.mysql.database.azure.com',
+    user: 'juancho@donjuancho',
+    password: 'Pollas1.',
+    database: 'blockbusted',
+    port: 3306,
+    ssl: true
+});
+pool.connect(error => {
+    if (error)
+        throw error;
+    console.log("Successfully connected to the database.");
 });
 exports.default = pool;

@@ -20,43 +20,78 @@ class UsuarioController {
         return __awaiter(this, void 0, void 0, function* () {
             const { email, password } = req.body;
             //const login =  await pool.query('SELECT * FROM usuario where Correo=\''+username+'\' AND Contraseña= \'' + password + '\'');
-            const login = yield database_1.default.query('SELECT * FROM usuario where Correo=\'' + email + '\'');
-            console.log(req.body);
-            if (login.length > 0) {
-                const contra = yield database_1.default.query('SELECT * FROM usuario where Correo=\'' + email + '\' AND Contraseña= \'' + password + '\'');
-                if (contra.length > 0) {
-                    return res.status(200).json({ text: 'Sesión Iniciada, Correctamente.', id_usuario: (contra[0]).id_usuario });
+            /*pool.query('SELECT * FROM usuario where Correo=\''+email+'\'', (err, res1) => {
+                if (err) {
+                    console.log("error: ", err);
+                    res.status(200).json({text: 'Usuario no encontrado'});
+                }
+                console.log(res1)
+                console.log(req.body)
+                if(res1.length > 0){
+                    pool.query('SELECT * FROM usuario where Correo=\''+email+'\' AND Contraseña= \'' + password + '\'', (err1, res2) => {
+                        if (err1) {
+                            console.log("error: ", err1);
+                            res.status(200).json({text: 'Usuario no encontrado'});
+                        }
+    
+                        if(res2.length>0)
+                        {
+                            res.status(200).json({text: 'Sesión Iniciada, Correctamente.', id_usuario: (res2[0]).id_usuario});
+                        }else{
+                            res.status(200).json({text: 'Contraseña Incorrecta.'});
+                        }
+                    });
+                   
+                }
+                res.status(200).json({text: 'Usuario no encontrado'});
+            });*/
+            yield database_1.default.query('SELECT * FROM usuario where Correo=\'' + email + '\' AND Contraseña= \'' + password + '\'', (err1, res2) => {
+                if (err1) {
+                    console.log("error: ", err1);
+                    res.status(200).json({ text: 'Usuario no encontrado' });
+                }
+                if (res2.length > 0) {
+                    res.status(200).json({ text: 'Sesión Iniciada, Correctamente.', id_usuario: (res2[0]).id_usuario });
                 }
                 else {
-                    return res.status(200).json({ text: 'Contraseña Incorrecta.' });
+                    res.status(200).json({ text: 'Usuario no encontrado' });
                 }
-            }
-            res.status(200).json({ text: 'Usuario no encontrado' });
+            });
         });
     }
     getuser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id_usuario } = req.body;
             //const login =  await pool.query('SELECT * FROM usuario where Correo=\''+username+'\' AND Contraseña= \'' + password + '\'');
-            const get_user = yield database_1.default.query("SELECT * FROM usuario where id_usuario=" + id_usuario + ";");
-            if (get_user.length > 0) {
-                return res.status(200).json({ text: 'caracteristicas', usuario: get_user });
-            }
-            else {
-                return res.status(200).json('Usuario No Encontrado.');
-            }
+            yield database_1.default.query("SELECT * FROM usuario where id_usuario=" + id_usuario + ";", (err1, res2) => {
+                if (err1) {
+                    console.log("error: ", err1);
+                    res.status(200).json({ text: 'Usuario no encontrado' });
+                }
+                if (res2.length > 0) {
+                    return res.status(200).json({ text: 'caracteristicas', usuario: res2 });
+                }
+                else {
+                    return res.status(200).json('Usuario No Encontrado.');
+                }
+            });
         });
     }
     getusers(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             //const login =  await pool.query('SELECT * FROM usuario where Correo=\''+username+'\' AND Contraseña= \'' + password + '\'');
-            const get_user = yield database_1.default.query("SELECT id_usuario 'ID', Usuario 'USUARIO' FROM Usuario;");
-            if (get_user.length > 0) {
-                return res.status(200).json({ usuarios: get_user });
-            }
-            else {
-                return res.status(200).json('Usuario No Encontrado.');
-            }
+            const get_user = yield database_1.default.query("SELECT id_usuario 'ID', Usuario 'USUARIO' FROM Usuario;", (err1, res2) => {
+                if (err1) {
+                    console.log("error: ", err1);
+                    res.status(200).json({ text: 'Usuario no encontrado' });
+                }
+                if (res2.length > 0) {
+                    return res.status(200).json({ usuarios: res2 });
+                }
+                else {
+                    return res.status(200).json('Usuario No Encontrado.');
+                }
+            });
         });
     }
     updateuser(req, res) {
@@ -66,25 +101,35 @@ class UsuarioController {
             const update_user = yield database_1.default.query(`UPDATE USUARIO
         SET Usuario = '${iusuario}', Correo = '${icorreo}', 
         Contraseña = '${ipassword}', Nombres = '${inombre}', Apellidos = '${iapellido}', 
-        DPI = ${idpi}, Edad = ${iedad} WHERE (id_usuario = ${id_usuario});`);
-            if (update_user.affectedRows == 1) {
-                return res.status(200).json('ok');
-            }
-            else {
-                return res.status(200).json('error');
-            }
+        DPI = ${idpi}, Edad = ${iedad} WHERE (id_usuario = ${id_usuario});`, (err1, res2) => {
+                if (err1) {
+                    console.log("error: ", err1);
+                    res.status(200).json({ text: 'Usuario no encontrado' });
+                }
+                if (res2.affectedRows == 1) {
+                    return res.status(200).json('ok');
+                }
+                else {
+                    return res.status(200).json('error');
+                }
+            });
         });
     }
     updatemovie(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { new_user, id_pelicula, current_user } = req.body;
-            const update_user = yield database_1.default.query(`UPDATE Pelicula_Alquilada SET usuario_actual = ${new_user} WHERE movie = ${id_pelicula} AND usuario_actual=${current_user};`);
-            if (update_user.affectedRows == 1) {
-                return res.status(200).json('ok');
-            }
-            else {
-                return res.status(200).json('error');
-            }
+            const update_user = yield database_1.default.query(`UPDATE Pelicula_Alquilada SET usuario_actual = ${new_user} WHERE movie = ${id_pelicula} AND usuario_actual=${current_user};`, (err1, res2) => {
+                if (err1) {
+                    console.log("error: ", err1);
+                    res.status(200).json({ text: 'Error' });
+                }
+                if (res2.affectedRows == 1) {
+                    return res.status(200).json('ok');
+                }
+                else {
+                    return res.status(200).json('error');
+                }
+            });
         });
     }
     index(req, res) {
@@ -102,8 +147,13 @@ class UsuarioController {
                 }
                 else {
                     console.log(req.body);
-                    yield database_1.default.query('INSERT INTO Usuario set ?', [req.body]);
-                    res.json({ message: 'Creando un usuario' });
+                    yield database_1.default.query('INSERT INTO Usuario set ?', [req.body], (err1, res2) => {
+                        if (err1) {
+                            console.log("error: ", err1);
+                            res.status(200).json({ text: 'Error' });
+                        }
+                        res.json({ message: 'Creando un usuario' });
+                    });
                 }
             }
             catch (e) {

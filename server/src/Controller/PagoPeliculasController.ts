@@ -28,8 +28,18 @@ class PagoPeliculasController {
         console.log(Monto_Pagar);
         console.log(Moneda_Pagar);
 
-        const resp = await pool.query('insert into Pago_Pelicula (alquiler, Numero_tarjeta_credito, Fecha_expiracion , Codigo_verificacion, Monto_apagar, Modena_apagar) values (?,?,?,?,?,?)', [Fk_Alquiler,Num_Tarjeta, Fecha_Expiracion, Codigo_Verificacion, Monto_Pagar, Moneda_Pagar]);
-        res.json(resp);
+        const resp = await pool.query('insert into Pago_Pelicula (alquiler, Numero_tarjeta_credito, Fecha_expiracion , Codigo_verificacion, Monto_apagar, Modena_apagar) values (?,?,?,?,?,?)', [Fk_Alquiler,Num_Tarjeta, Fecha_Expiracion, Codigo_Verificacion, Monto_Pagar, Moneda_Pagar],
+        (err1, res2) => {
+            if (err1) {
+                console.log("error: ", err1);
+                res.status(400).json({
+                    status:"Bad",
+                    message:"Errorsito",
+                });
+            }
+            res.json(res2);
+        });
+       
     }
 
 
@@ -41,8 +51,18 @@ class PagoPeliculasController {
         var Monto_Pagar = body.Apagar;
         var Moneda_Pagar = body.Moneda;
 
-        const resp = await pool.query('INSERT INTO Pago (Num_Tarjeta, Fecha_Expiracion, Codigo_Verificacion, Monto,Moneda,fk_alquiler) values (?,?,?,?,?)', [Num_Tarjeta, Fecha_Expiracion, Codigo_Verificacion, Monto_Pagar, Moneda_Pagar]);
-        res.json(resp);
+        const resp = await pool.query('INSERT INTO Pago (Num_Tarjeta, Fecha_Expiracion, Codigo_Verificacion, Monto,Moneda,fk_alquiler) values (?,?,?,?,?)', [Num_Tarjeta, Fecha_Expiracion, Codigo_Verificacion, Monto_Pagar, Moneda_Pagar],
+        (err1, res2) => {
+            if (err1) {
+                console.log("error: ", err1);
+                res.status(400).json({
+                    status:"Bad",
+                    message:"Errorsito",
+                });
+            }
+            res.json(res2);
+        });
+        
     }
 
     public async GetPagos(req: Request, res: Response): Promise<any> {
@@ -64,17 +84,38 @@ class PagoPeliculasController {
 
         console.log(Id_Usuario);
         console.log(String(Id_Alquiler));
-        const resp = await pool.query('select sum(ChargeRate) as suma from Movie as m join Pelicula_Alquilada as pa on pa.movie = m.id_Movie join Alquiler as al on al.id_alquiler = pa.alquiler and al.id_alquiler = ? join Usuario as u on u.id_usuario = ?', [Id_Alquiler, Id_Usuario]);
+        const resp = await pool.query('select sum(ChargeRate) as suma from Movie as m join Pelicula_Alquilada as pa on pa.movie = m.id_Movie join Alquiler as al on al.id_alquiler = pa.alquiler and al.id_alquiler = ? join Usuario as u on u.id_usuario = ?', [Id_Alquiler, Id_Usuario],
+        (err1, res2) => {
+            if (err1) {
+                console.log("error: ", err1);
+                res.status(400).json({
+                    status:"Bad",
+                    message:"Errorsito",
+                });
+            }
+            console.log(res2)
+            res.json(res2[0].suma);
+        });
         //const resp = await pool.query('select sum(ChargeRate) as suma from Movie as m join Pelicula_Alquilada as pa on pa.movie = m.id_Movie join Alquiler as al on al.id_alquiler = pa.alquiler and al.id_alquiler = ?', [Id_Alquiler]);
         //const resp = await pool.query('select sum(ChargeRate) as suma from Movie as m join Pelicula_Alquilada as pa on pa.movie = m.id_Movie join Usuario as u  on u.id_usuario = ?', [Id_Usuario]);
-        console.log(resp)
-        res.json(resp[0].suma);
+       
     }
 
     public async TipodeCambio(req: Request, res: Response): Promise<any> {
-        const respuesta = await pool.query('select total from ExchangeRate');
-        console.log(respuesta[0]);
-        res.json(respuesta[0].total);
+        const respuesta = await pool.query('select total from ExchangeRate',
+        (err1, res2) => {
+            if (err1) {
+                console.log("error: ", err1);
+                res.status(400).json({
+                    status:"Bad",
+                    message:"Errorsito",
+                });
+            }
+            console.log(res2[0]);
+            res.json(res2[0].total);
+        }
+        );
+       
         
     }
 

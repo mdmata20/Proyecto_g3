@@ -13,8 +13,18 @@ class UsuarioAdmin {
           "select \"Alquiler\" as Transaccion,usu.Nombres,usu.Apellidos,usu.DPI,usu.Correo,mov.name,\
           mov.ChargeRate\
           from Alquiler al,Pelicula_Alquilada pa,Movie mov,usuario usu\
-          where al.usuario=usu.id_usuario and pa.movie=mov.id_movie and pa.alquiler=al.id_alquiler ;");
-        res.json(CatalogoPeliculas).status(200);
+          where al.usuario=usu.id_usuario and pa.movie=mov.id_movie and pa.alquiler=al.id_alquiler ;",
+          (err1, res2) => {
+            if (err1) {
+                console.log("error: ", err1);
+                res.status(400).json({
+                    status:"Bad",
+                    message:"Errorsito",
+                });
+            }
+            res.json(res2).status(200);
+          });
+        
 
     } catch (e) {
       
@@ -39,8 +49,18 @@ class UsuarioAdmin {
           "select \"Pago\" as Transaccion,usu.Nombres,usu.Apellidos,usu.DPI,usu.Correo,mov.name,\
           pp.Fecha_expiracion,pp.Monto_apagar,pp.Modena_apagar\
           from usuario usu,Pago_Pelicula pp,Movie mov,Alquiler al,Pelicula_Alquilada pa\
-          where pp.alquiler=al.id_alquiler and al.usuario=usu.id_usuario and pa.movie=mov.id_movie and\ pa.alquiler=al.id_alquiler ;");
-        res.json(CatalogoPeliculas).status(200);
+          where pp.alquiler=al.id_alquiler and al.usuario=usu.id_usuario and pa.movie=mov.id_movie and\ pa.alquiler=al.id_alquiler ;",
+          (err1, res2) => {
+            if (err1) {
+                console.log("error: ", err1);
+                res.status(400).json({
+                    status:"Bad",
+                    message:"Errorsito",
+                });
+            }
+            res.json(res2).status(200);
+          });
+        
 
     } catch (e) {
       

@@ -50,6 +50,38 @@ jobs:
       - name: Build
         run: docker-compose -f "docker-compose.yml" up -d --build
 
+  build-cliente:
+
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Intalacion Depencias
+        run: |
+          cd Frontend
+          cd Proyecto
+          sudo npm install
+          docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
+          docker build --no-cache -t "mdmata/cliente_app:latest" ./
+          docker push "mdmata/cliente_app:latest"
+
+  deploy-cliente:
+
+    runs-on: self-hosted
+
+    image: docker:latest
+
+    steps:
+      - name: stops
+        run: |
+          docker stop cliente_app
+          docker rm cliente_app
+          docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
+          docker pull "mdmata/cliente_app:latest"
+          docker run -d -p 0.0.0.0:80:4200 -name=cliente mdmata/cliente_app:latest
+          docker image prune
+          docker logout
+
 
 
 

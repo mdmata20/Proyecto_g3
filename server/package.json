@@ -6,7 +6,7 @@
   "scripts": {
     "test-code-coverage": "nyc --reporter=text mocha",
     "test-html": "nyc --reporter=html --reporter=text mocha",
-    "build": "tsc -w",
+    "build": "tsc",
     "dev": "nodemon build/index.js",
     "test": "mocha",
     "coverage": "nyc -x \"**/tests/**\" --reporter=cobertura --reporter=text mocha ./test"

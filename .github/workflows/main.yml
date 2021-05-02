@@ -1,4 +1,3 @@
-# This is a basic workflow to help you get started with Actions
 
 name: Integracion Continua
 
@@ -35,13 +34,11 @@ jobs:
       - name: npm run dev
         run: |
           cd server
-          npm cache clean --forve
+          nom i --save-dev typescript
+          npm run build
           npm install
           npm run dev
       - name: Test
         run: |
           cd server
           npm test
-
-  
-    

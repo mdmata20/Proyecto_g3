@@ -2,7 +2,7 @@ import {Request, Response } from 'express';
 
 import pool   from '../database';
 
-import validar from '../Validaciones/ValidarRegistro';
+//import validar from '../Validaciones/ValidarRegistro';
 
 //const validar=require('../Validaciones');
 
@@ -86,19 +86,19 @@ class UsuarioController {
 
         try{
 
-        let result=validar(req.body);
+       // let result=validar(req.body);
     
-        if ( result !== ""){
+        /*if ( result !== ""){
            res.status(400).json({
             status:result,
             });
-        }else{
+        }else{*/
 
         console.log(req.body);
         await pool.query('INSERT INTO Usuario set ?', [req.body]);
         res.json({message: 'Creando un usuario'});
 
-        }
+        
 
 
     }catch(e){

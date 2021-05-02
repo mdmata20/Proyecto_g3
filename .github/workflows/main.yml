@@ -24,12 +24,12 @@ jobs:
       - name: Intalacion Depencias
         run: |
           cd server
-          npm i --save-dev typescript	
-          npm install
+          sudo npm i --save-dev typescript	
+          sudo npm install
       - name: Test
         run: |
           cd server
-          npm test
+          sudo npm test
 
   deploy-server:
       

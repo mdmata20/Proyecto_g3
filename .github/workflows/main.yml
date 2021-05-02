@@ -27,32 +27,10 @@ jobs:
         uses: actions/setup-node@v1
         with: 
           node-version: ${{ matrix.node-version }}
-      - run: cd ..
-      - run: cd ..
       - run: cd server
       - run: npm ci
-      - run: npm run build
-      - run: npm run dev
-      - run: npm run test
+      - run: npm build
+      - run: npm test
 
-  build-windows: 
-    # The type of runner that the job will run on
-    runs-on: windows-latest
-
-    strategy:
-      matrix: 
-        node-version: [14.15.4]
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{matrix.node-version }}
-        uses: actions/setup-node@v1
-        with: 
-          node-version: ${{ matrix.node-version }}
-      - run: cd ..
-      - run: cd ..
-      - run: cd server
-      - run: npm ci
-      - run: npm run build
-      - run: npm run dev
-      - run: npm run test
+  
     

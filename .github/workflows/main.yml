@@ -64,7 +64,7 @@ jobs:
   build-cliente:
 
     runs-on: self-hosted
-     needs: deploy-server
+    needs: deploy-server
 
     steps:
       - uses: actions/checkout@v2

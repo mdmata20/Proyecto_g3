@@ -57,6 +57,18 @@ class AlquilerController {
             });
         }
     }
+
+    public async deleteAlquiler (req: Request, res: Response): Promise<void>{
+        const {id_alquiler} = req.params;
+        await pool.query('DELETE From Alquiler where id_alquiler = ?',[id_alquiler]);
+        res.json({text: 'Delete Alquiler'});
+    }    
+
+    public async deletePelicula (req: Request, res: Response): Promise<void>{
+        const {id_alquiler} = req.params;
+        await pool.query('DELETE From Pelicula_Alquilada where alquiler = ?',[id_alquiler]);
+        res.json({text: 'Delete Pelicula'});
+    }    
 }
 
 const alquilerController = new AlquilerController();

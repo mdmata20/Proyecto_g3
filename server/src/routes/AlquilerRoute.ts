@@ -13,7 +13,8 @@ class AlquilerRoutes {
     config(): void{
         this.router.post('/alquilar', AlquilerController.createAlquiler);
         this.router.post('/pelicula', AlquilerController.createAlquilado);
-
+        this.router.delete('/alquilar/:id_alquiler',AlquilerController.deleteAlquiler);
+        this.router.delete('/pelicula/:id_alquiler',AlquilerController.deletePelicula);
     }
 }
 

@@ -19,6 +19,11 @@ jobs:
   build-cliente:
 
     runs-on: self-hosted
+
+    variables:
+      DOCKER_REGISTRY: "docker.io"
+      DOCKER_TLS_CERTDIR: "/certs"
+
     steps:
       - uses: actions/checkout@v2
       - name: Intalacion Depencias

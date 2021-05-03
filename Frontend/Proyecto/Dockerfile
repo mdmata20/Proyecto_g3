@@ -5,10 +5,10 @@ WORKDIR /usr/src/app
 ARG NODE_ENV
 ENV NODE_ENV $NODE_ENV
 
-COPY . /usr/src/app
+COPY package.json /usr/src/app
 
 RUN npm install
 
-CMD ["ng", "serve"]
+COPY ./src /usr/src/app
 
-EXPOSE 4200
+CMD ["npm", "start" ]

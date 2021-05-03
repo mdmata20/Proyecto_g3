@@ -1,1 +1,1 @@
-export let API_URI:String = "http://localhost:3000"
+export let API_URI:String = "http://34.72.43.127:3000"

@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class CatalogoService {
   
-  API_URL = 'http://localhost:3000/BlockBusted/Catalogo'
+  API_URL = 'http://34.72.43.127:3000/BlockBusted/Catalogo'
 
   constructor(private http: HttpClient) { }
 

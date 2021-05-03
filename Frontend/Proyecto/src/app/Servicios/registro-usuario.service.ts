@@ -17,9 +17,9 @@ export class RegistroUsuarioService {
 
 
   registrar_usuario(nombre:string,apellido:string,usuario:string,edad:number,dpi:number,correo:string,contraseña:string){//hara la peticion al servidor hecho con nodejs
-    //return this.http.post<any>('http://localhost:3000/signup',user);//se envia a la BD los datos que trae user
+    //return this.http.post<any>('http://34.72.43.127:3000/signup',user);//se envia a la BD los datos que trae user
     
-    const url="http://localhost:3000/BlockBusted/usuario";
+    const url="http://34.72.43.127:3000/BlockBusted/usuario";
  
     return this.http.post(
      url,
@@ -40,12 +40,12 @@ export class RegistroUsuarioService {
 
   //es para la parte del admin para ver los detalles de las transacciones
   Get_DetalleAlquilerPeli(){
-    const url="http://localhost:3000/BlockBusted/DetalleTransaccion/Alquiler";
+    const url="http://34.72.43.127:3000/BlockBusted/DetalleTransaccion/Alquiler";
     return this.http.get(url);
   }
 
   Get_DetallePagoPeli(){
-    const url="http://localhost:3000/BlockBusted/DetalleTransaccion/Pago";
+    const url="http://34.72.43.127:3000/BlockBusted/DetalleTransaccion/Pago";
     return this.http.get(url);
   }
 
@@ -57,7 +57,7 @@ export class RegistroUsuarioService {
 
   //es para un usuario unico para ver sus detalles de sus transacciones
   Get_MiDetalleAlquilerPeli(iduser:any){
-    const url="http://localhost:3000/BlockBusted/MiDetalleTransaccion/MiAlquiler";
+    const url="http://34.72.43.127:3000/BlockBusted/MiDetalleTransaccion/MiAlquiler";
     return this.http.post(url,{
       "Id_Usuario": iduser
     },
@@ -66,7 +66,7 @@ export class RegistroUsuarioService {
   }
 
   Get_MiDetallePagoPeli(iduser:any){
-    const url="http://localhost:3000/BlockBusted/MiDetalleTransaccion/MiPago";
+    const url="http://34.72.43.127:3000/BlockBusted/MiDetalleTransaccion/MiPago";
     return this.http.post(url,{
       "Id_Usuario": iduser
     },

@@ -20,7 +20,7 @@ export class AquilerService {
 
   registrar_alquiler(alpha:string,user:number){
     
-    const url="http://localhost:3000/BlockBusted/Alquiler/alquilar";
+    const url="http://34.72.43.127:3000/BlockBusted/Alquiler/alquilar";
  
     this.Temp_Id_Alquier = alpha;  
     return this.http.post(
@@ -36,7 +36,7 @@ export class AquilerService {
 
   registrar_pelicula(alpha:string,pelicula:number,user:number){
     
-    const url="http://localhost:3000/BlockBusted/Alquiler/pelicula";
+    const url="http://34.72.43.127:3000/BlockBusted/Alquiler/pelicula";
  
     return this.http.post(
      url,
@@ -52,7 +52,7 @@ export class AquilerService {
 
   desabilitar_pelicula(pelicula:number, valor:boolean){
     
-    const url="http://localhost:3000/BlockBusted/Catalogo/" + pelicula;
+    const url="http://34.72.43.127:3000/BlockBusted/Catalogo/" + pelicula;
  
     return this.http.put(
      url,
@@ -66,7 +66,7 @@ export class AquilerService {
 
   eliminar_pelicula(alpha:string){
     
-    const url="http://localhost:3000/BlockBusted/Alquiler/pelicula/" + alpha;
+    const url="http://34.72.43.127:3000/BlockBusted/Alquiler/pelicula/" + alpha;
  
     return this.http.delete(
      url,
@@ -77,7 +77,7 @@ export class AquilerService {
 
   eliminar_alquiler(alpha:string){
     
-    const url="http://localhost:3000/BlockBusted/Alquiler/alquilar/" + alpha;
+    const url="http://34.72.43.127:3000/BlockBusted/Alquiler/alquilar/" + alpha;
  
     return this.http.delete(
      url,

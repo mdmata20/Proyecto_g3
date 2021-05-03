@@ -17,7 +17,7 @@ export class SerciviosPagoService {
     "Content-Type": "application/json"
   });
 
-  Api_pagos ="http://localhost:3000/BlockBusted/pago"
+  Api_pagos ="http://34.72.43.127:3000/BlockBusted/pago"
 
   //Pagos de un usuario en especifico 
   GetPagos(Id_usuario:string){

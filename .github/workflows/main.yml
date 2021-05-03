@@ -53,6 +53,8 @@ jobs:
 
       - name: push
         run: |
+          docker stop server
+          docker rm server
           docker pull "mdmata/back:latest"
           docker run -d -p 0.0.0.0:3000:3000 --name=server mdmata/back:latest
           docker logout

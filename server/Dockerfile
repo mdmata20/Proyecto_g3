@@ -8,7 +8,7 @@ ENV NODE_ENV $NODE_ENV
 COPY package.json /usr/app/back
 RUN npm install typescript -g
 RUN npm install
-RUN npm run build
+RUN npm build
 
 COPY . /usr/app/back
 

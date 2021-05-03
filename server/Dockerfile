@@ -5,12 +5,13 @@ WORKDIR /usr/app/back
 ARG NODE_ENV
 ENV NODE_ENV $NODE_ENV
 
-COPY package.json /usr/app/back
+COPY . /usr/app/back
 RUN npm install typescript -g
 RUN npm install
+
 RUN npm run build
 
-COPY . /usr/app/back
+
 
 CMD ["npm", "run", "dev"]
 

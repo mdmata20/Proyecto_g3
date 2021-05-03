@@ -26,8 +26,9 @@ jobs:
           cd server
           sudo npm i --save-dev typescript	
           sudo npm install
+
+      - uses: docker/build-push-action@v1    
       - name: Docker logs
-      - uses: docker/build-push-action@v1
         run: |
          cd server
          docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
@@ -46,11 +47,13 @@ jobs:
       url: http://35.188.63.171:3000/
     
     steps:
+
       - uses: actions/checkout@v2
       - name: Docker logs
         run: docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
-      - name: push
+
       - uses: docker/build-push-action@v1
+      - name: push
         run: |
           docker pull "mdmata/back:latest"
           docker run -d -p 0.0.0.0:3000:3000 --name=server mdmata/back:latest

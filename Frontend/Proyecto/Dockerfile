@@ -8,6 +8,10 @@ ENV NODE_ENV $NODE_ENV
 COPY . /usr/src/app
 
 RUN npm install
+RUN npm run build
 
-CMD ["npm", "start"]
+FROM nginx:latest
+
+COPY --from=build /usr/src/app/dist/Proyecto /usr/share/nginx/html
+
 EXPOSE 4200

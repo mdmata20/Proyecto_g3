@@ -16,9 +16,55 @@ on:
 jobs:
   # This workflow contains a single job called "build"
 
+
+  build-server: 
+    # The type of runner that the job will run on
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Intalacion Depencias
+        run: |
+          cd server
+          sudo npm i --save-dev typescript	
+          sudo npm install
+
+      - name: Docker logs
+        run: |
+         cd server
+         docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
+         docker build -t "mdmata/back:latest" .
+         docker push "mdmata/back:latest"
+         docker logout  
+
+
+  deploy-server:
+      
+    runs-on: self-hosted
+    needs: build-server
+    
+    environment:
+      name: production
+      url: http://35.188.63.171:3000/
+    
+    steps:
+
+      - uses: actions/checkout@v2
+      - name: Docker logs
+        run: docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
+
+      - name: push
+        run: |
+          docker stop server
+          docker rm server
+          docker pull "mdmata/back:latest"
+          docker run -d -p 0.0.0.0:3000:3000 --name=server mdmata/back:latest
+          docker logout 
+
   build-cliente:
 
     runs-on: self-hosted
+     needs: deploy-server
 
     steps:
       - uses: actions/checkout@v2

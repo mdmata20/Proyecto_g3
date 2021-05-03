@@ -31,9 +31,8 @@ jobs:
 
       - name: Docker logs
         run: |
-         cd server
          docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
-         docker build -t "mdmata/back:latest" .
+         docker build -t "mdmata/back:latest" ./server
          docker push "mdmata/back:latest"
          docker logout  
 
@@ -59,6 +58,7 @@ jobs:
           docker rm server
           docker pull "mdmata/back:latest"
           docker run -d -p 0.0.0.0:3000:3000 --name=server mdmata/back:latest
+          docker image prune
           docker logout 
 
   build-cliente:
@@ -68,12 +68,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Intalacion Depencias
+      - name: Docker construcction
         run: |
-          cd Frontend
-          cd Proyecto
           docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
-          docker build --no-cache -t "mdmata/front:latest" ./
+          docker build --no-cache -t "mdmata/front:latest" ./Frontend/Proyecto
           docker push mdmata/front:latest"
 
   deploy-cliente:
@@ -88,11 +86,10 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2
-      - name: Docker logs
-        run: docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
-
-      - name: push
+      - name: Docker Deploy
         run: |
+          docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
           docker pull "mdmata/front:latest"
-          docker run -d -p 0.0.0.0:4200:4200 --name=server mdmata/front:latest
+          docker run -d -p 0.0.0.0:4200:4200 --name=cliente mdmata/front:latest
+          docker image prune
           docker logout

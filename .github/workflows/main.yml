@@ -61,35 +61,18 @@ jobs:
           docker image prune
           docker logout 
 
-  build-cliente:
-
-    runs-on: self-hosted
-    needs: deploy-server
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Docker construcction
-        run: |
-          docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
-          docker build --no-cache -t "mdmata/front:latest" ./Frontend/Proyecto
-          docker push mdmata/front:latest"
-
-  deploy-cliente:
-
-    runs-on: self-hosted
-    needs: build-cliente
+  angular-deploy:
     
-    environment:
-      name: production
-      url: http://35.188.63.171:4200/
+    runs-on: ubuntu.latest
     
     steps:
-
       - uses: actions/checkout@v2
-      - name: Docker Deploy
-        run: |
-          docker login -u mdmata -p 9adabc6a-1e46-4198-8687-f2037eb1349a
-          docker pull "mdmata/front:latest"
-          docker run -d -p 0.0.0.0:4200:4200 --name=cliente mdmata/front:latest
-          docker image prune
-          docker logout
+
+      - name: Angular Deploy gh-pages
+        uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.1
+        with:
+            github_acces_token: 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
+            build_configuration: production
+            base_href: /Frontend/Proyecto/
+            deploy_branch: gh-pages
+            angular_dist_build_folder: dist/Proyecto

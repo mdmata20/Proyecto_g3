@@ -68,12 +68,11 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
-
-      - uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.1
       - name: Angular Deploy gh-pages
+        uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.1
         with:
             github_acces_token: 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
-            build_configuration: production
+            build_configuration: staging
             base_href: /Frontend/Proyecto/
             deploy_branch: gh-pages
             angular_dist_build_folder: dist/Proyecto

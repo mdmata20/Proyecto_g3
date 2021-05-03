@@ -50,15 +50,37 @@ export class AquilerService {
  
   }
 
-  desabilitar_pelicula(pelicula:number){
+  desabilitar_pelicula(pelicula:number, valor:boolean){
     
     const url="http://localhost:3000/BlockBusted/Catalogo/" + pelicula;
  
     return this.http.put(
      url,
      { 
-      active:false
+      active:valor
      },
+     { headers: this.headers }
+   ).pipe(map(data => data));
+ 
+  }
+
+  eliminar_pelicula(alpha:string){
+    
+    const url="http://localhost:3000/BlockBusted/Alquiler/pelicula/" + alpha;
+ 
+    return this.http.delete(
+     url,
+     { headers: this.headers }
+   ).pipe(map(data => data));
+ 
+  }
+
+  eliminar_alquiler(alpha:string){
+    
+    const url="http://localhost:3000/BlockBusted/Alquiler/alquilar/" + alpha;
+ 
+    return this.http.delete(
+     url,
      { headers: this.headers }
    ).pipe(map(data => data));
  

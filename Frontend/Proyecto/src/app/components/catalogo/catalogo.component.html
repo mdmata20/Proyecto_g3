@@ -41,11 +41,11 @@
       <p>Plan: {{Catalogo.availabilities}}</p>
       <p>Lenguaje: {{Catalogo.languages}}</p>
 
-      <a (click)="alquilarMovie(Catalogo.id, $event)" class="btn btn-info btn-block">
+      <a id="alqui" (click)="alquilarMovie(Catalogo.id, $event)" class="btn btn-info btn-block btnClass">
         Alquilar
       </a>
 
-      <a (click)="noAlquilarMovie(Catalogo.id, $event)" class="btn btn-danger btn-block" hidden=true>
+      <a id="desal" (click)="noAlquilarMovie(Catalogo.id, $event)" class="btn btn-danger btn-block noBtnClass" hidden=true>
         No Alquilar
       </a>
       

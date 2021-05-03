@@ -68,7 +68,6 @@ export class CatalogoComponent implements OnInit {
         
       },  
      
-      err => console.error(err)
     )
 
     this.checksessionStorage();
@@ -81,25 +80,23 @@ export class CatalogoComponent implements OnInit {
   }
 
   alquilarMovie(id: string,event: any) {
-    console.log(sessionStorage.getItem('id_usuario'));
     this.ID_ALQUILER = this.alphaString;
-    console.log(" -> Este es el id " +this.alphaString);
-    event.target.hidden = true;
-    console.log(event)
-    //event.explicitOriginalTarget.nextSibling.hidden = false;
-    event.target.nextSibling;
+    if(event){
+      event.target.hidden = true;
+      //event.explicitOriginalTarget.nextSibling.hidden = false;
+      event.target.nextSibling.hidden = false;
+    }
     this.alquileres.push(Number(id));
 
-    console.log("->"+this.alquileres)
   }
 
   noAlquilarMovie(id: string,event: any) {
-    console.log(sessionStorage.getItem('id_usuario'));
-    console.log(this.alphaString);
-    event.target.hidden = true;
-    //event.explicitOriginalTarget.previousSibling.hidden = false;
-    event.target.previousSibling;
-
+    if(event){
+      event.target.hidden = true;
+      //event.explicitOriginalTarget.previousSibling.hidden = false;
+      event.target.previousSibling.hidden = false;
+    }
+    
     for( var i = 0; i < this.alquileres.length; i++){ 
                                    
       if ( this.alquileres[i].toString() === id) { 
@@ -107,8 +104,6 @@ export class CatalogoComponent implements OnInit {
           i--; 
       }
     }
-
-    console.log("-> no laquiler" +this.alquileres)
   }
 
   randomString(length:number, chars: string) {
@@ -124,10 +119,6 @@ export class CatalogoComponent implements OnInit {
      
       res=>{
         console.log("->aa"+res);
-      },
-     
-      err =>{
-        console.log(err);
       }
     )
 
@@ -135,31 +126,21 @@ export class CatalogoComponent implements OnInit {
       const element = this.alquileres[index];
       this.registraralquiler.registrar_pelicula(this.alphaString, element, Number(sessionStorage.getItem('id_usuario')))
       .subscribe(
-       
+      
         res=>{
           console.log(res);
-        },
-        
-        err =>{
-          console.log(err);
         }
       )
 
-      this.registraralquiler.desabilitar_pelicula(element)
+      this.registraralquiler.desabilitar_pelicula(element, false)
       .subscribe(
         
         res=>{
           console.log(res);
-        },
-        
-        err =>{
-          console.log(err);
         }
       )
     }
 
     this.router.navigateByUrl('/pagopeliculas');
   }
-
-
 }

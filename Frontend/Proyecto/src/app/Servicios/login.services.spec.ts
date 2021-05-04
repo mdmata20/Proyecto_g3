@@ -1,11 +1,11 @@
 
 import { async,inject, ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
 
-import { LoginComponent } from './login.component';
+//import { LoginComponent } from './login.component';
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing"
 import { HttpClient  } from '@angular/common/http';
 import { RouterTestingModule } from "@angular/router/testing";
-//import { UsersService } from './../../Servicios/login.services';
+import { UsersService } from './login.services';
 
 //import { RegistroComponent } from '../registro/registro.component'
 import { DebugElement } from '@angular/core';
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 const routerSpy = { navigate: jasmine.createSpy('navigate') };
 import { NO_ERRORS_SCHEMA} from '@angular/core';
 
-/*
+
 class HttpClientMock {
   get = jasmine.createSpy('httpClient.get');
   post = jasmine.createSpy('httpClient.post');
@@ -24,8 +24,8 @@ class StorageServiceMock {
 }
 
 describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+  //let component: LoginComponent;
+  //let fixture: ComponentFixture<LoginComponent>;
   let service: UsersService;
   let httpMock: HttpTestingController;
   let httpClient: HttpClient;
@@ -120,34 +120,6 @@ describe('LoginComponent', () => {
     httpMock.verify();
   }));
 
-
-
-
-});
-*/
-
-
-describe('UsuarioComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ LoginComponent ],
-      imports: [HttpClientTestingModule,RouterTestingModule]
-    })
-    .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 
 });
 

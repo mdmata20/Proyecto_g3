@@ -7,6 +7,7 @@ import {HttpClientTestingModule, HttpTestingController} from "@angular/common/ht
 import { HttpClient  } from '@angular/common/http';
 import { DetalleAlquilerInterface,DetallePagoInterface} from '../models/Catalogo';
 
+const url = 'http://34.72.43.127:3000/BlockBusted';
 class HttpClientMock {
   get = jasmine.createSpy('httpClient.get');
 }
@@ -59,7 +60,7 @@ it('IngresarUsuario()', () => {
     }
   );
 
-  const req = httpMock.expectOne("http://localhost:3000/BlockBusted/usuario");
+  const req = httpMock.expectOne(url +"/usuario");
   expect(req.request.method).toBe('POST');
   req.flush(respuesta);
   httpMock.verify();
@@ -75,7 +76,7 @@ it('Get_AlquileresUsuarios()', () => {
     }
   );
 
-  const req = httpMock.expectOne("http://localhost:3000/BlockBusted/DetalleTransaccion/Alquiler");
+  const req = httpMock.expectOne(url +"/DetalleTransaccion/Alquiler");
   expect(req.request.method).toBe('GET');
   httpMock.verify();
 });
@@ -90,7 +91,7 @@ it('Get_PagosUsuarios()', () => {
     }
   );
 
-  const req = httpMock.expectOne("http://localhost:3000/BlockBusted/DetalleTransaccion/Pago");
+  const req = httpMock.expectOne(url +"/DetalleTransaccion/Pago");
   expect(req.request.method).toBe('GET');
   httpMock.verify();
 });
@@ -113,7 +114,7 @@ it('Get_AlquileresUnicoUsuario()', () => {
     }
   );
 
-  const req = httpMock.expectOne("http://localhost:3000/BlockBusted/MiDetalleTransaccion/MiAlquiler");
+  const req = httpMock.expectOne(url +"/MiDetalleTransaccion/MiAlquiler");
   expect(req.request.method).toBe('POST');
   req.flush(respuesta);
   httpMock.verify();
@@ -137,7 +138,7 @@ it('Get_PagosUnicoUsuario()', () => {
     }
   );
 
-  const req = httpMock.expectOne("http://localhost:3000/BlockBusted/MiDetalleTransaccion/MiPago");
+  const req = httpMock.expectOne(url +"/MiDetalleTransaccion/MiPago");
   expect(req.request.method).toBe('POST');
   req.flush(respuesta);
   httpMock.verify();

@@ -37,7 +37,7 @@ describe('AquilerService', () => {
       }
     );
 
-    const req = httpMock.expectOne("http://localhost:3000/BlockBusted/Alquiler/alquilar")
+    const req = httpMock.expectOne("http://34.72.43.127:3000/BlockBusted/Alquiler/alquilar")
     expect(req.request.method).toBe('POST');
     req.flush(respuesta);
     httpMock.verify();
@@ -53,7 +53,7 @@ describe('AquilerService', () => {
       }
     );
 
-    const req = httpMock.expectOne("http://localhost:3000/BlockBusted/Alquiler/pelicula")
+    const req = httpMock.expectOne("http://34.72.43.127:3000/BlockBusted/Alquiler/pelicula")
     expect(req.request.method).toBe('POST');
     req.flush(respuesta);
     httpMock.verify();
@@ -70,7 +70,7 @@ describe('AquilerService', () => {
       }
     );
 
-    const req = httpMock.expectOne("http://localhost:3000/BlockBusted/Catalogo/1")
+    const req = httpMock.expectOne("http://34.72.43.127:3000/BlockBusted/Catalogo/1")
     expect(req.request.method).toBe('PUT');
     req.flush(respuesta);
     httpMock.verify();
@@ -86,7 +86,7 @@ describe('AquilerService', () => {
       }
     );
 
-    const req = httpMock.expectOne("http://localhost:3000/BlockBusted/Alquiler/pelicula/yoiur3h");
+    const req = httpMock.expectOne("http://34.72.43.127:3000/BlockBusted/Alquiler/pelicula/yoiur3h");
     expect(req.request.method).toBe('DELETE');
     req.flush(result);
     httpMock.verify();
@@ -101,7 +101,7 @@ describe('AquilerService', () => {
       }
     );
 
-    const req = httpMock.expectOne("http://localhost:3000/BlockBusted/Alquiler/alquilar/yoiur3h");
+    const req = httpMock.expectOne("http://34.72.43.127:3000/BlockBusted/Alquiler/alquilar/yoiur3h");
     expect(req.request.method).toBe('DELETE');
     req.flush(result);
     httpMock.verify();

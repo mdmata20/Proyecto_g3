@@ -6,7 +6,7 @@ describe('RegistroComponent', () => {
   let component: RegistroComponent;
   let fixture: ComponentFixture<RegistroComponent>;
 
-  beforeEach(async () => {
+  /*beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ RegistroComponent ]
     })
@@ -21,5 +21,5 @@ describe('RegistroComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
-  });
+  });*/
 });

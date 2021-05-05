@@ -42,41 +42,6 @@ class PagoPeliculasController {
        
     }
 
-
-    public async RegistrarPago2(req: Request, res: Response): Promise<void> {
-        var body = (req.body);
-        var Num_Tarjeta = body.Num_Tarjeta;
-        var Fecha_Expiracion = body.Fecha;
-        var Codigo_Verificacion = body.Codigo;
-        var Monto_Pagar = body.Apagar;
-        var Moneda_Pagar = body.Moneda;
-
-        const resp = await pool.query('INSERT INTO Pago (Num_Tarjeta, Fecha_Expiracion, Codigo_Verificacion, Monto,Moneda,fk_alquiler) values (?,?,?,?,?)', [Num_Tarjeta, Fecha_Expiracion, Codigo_Verificacion, Monto_Pagar, Moneda_Pagar],
-        (err1, res2) => {
-            if (err1) {
-                console.log("error: ", err1);
-                res.status(400).json({
-                    status:"Bad",
-                    message:"Errorsito",
-                });
-            }
-            res.json(res2);
-        });
-        
-    }
-
-    public async GetPagos(req: Request, res: Response): Promise<any> {
-        const respuesta = await pool.query('select * from Pago_Pelicula');
-        res.json(respuesta);
-    }
-
-    public async Llenado(req: Request, res: Response): Promise<void> {
-        request2('https://my-json-server.typicode.com/CoffeePaw/AyD1API/ExchangeRate', function (error:any, response:any, body: any) {
-            let cambio = JSON.parse(body);
-            console.log(cambio[0].total);
-        });
-    }
-
     public async TotalAlquilado(req: Request, res: Response): Promise<any> {
         var body = (req.body);
         var Id_Usuario = body.Id_Usuario;

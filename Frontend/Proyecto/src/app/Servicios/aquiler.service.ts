@@ -16,6 +16,7 @@ export class AquilerService {
 
   Temp_Id_Alquier:string="";
   Id_Usuario:string ="";
+  ID_Movies:number[] = [];
 
 
   registrar_alquiler(alpha:string,user:number){
@@ -35,7 +36,7 @@ export class AquilerService {
   }
 
   registrar_pelicula(alpha:string,pelicula:number,user:number){
-    
+    this.ID_Movies.push(Number(pelicula));
     const url="http://34.72.43.127:3000/BlockBusted/Alquiler/pelicula";
  
     return this.http.post(

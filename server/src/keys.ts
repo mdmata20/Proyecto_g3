@@ -1,8 +1,8 @@
 export default {
     database: {
-        host: 'localhost',
-        user: 'root',
-        password: '5470',
+        host: '127.0.0.1',
+        user: 'pro',
+        password: 'pro',
         database: 'blockbusted'
    }
 }

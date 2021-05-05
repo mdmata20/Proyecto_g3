@@ -19,6 +19,8 @@ export class CatalogoComponent implements OnInit {
 
   ID_ALQUILER:string ="";
 
+  ID_Movies:number[] = [];
+
   constructor(private registraralquiler: AquilerService, private catalogoServices: CatalogoService,  public router: Router) {
     /*this.catalogoServices.getCatalogo1().subscribe(resp =>{
       console.log(resp)
@@ -87,6 +89,7 @@ export class CatalogoComponent implements OnInit {
       event.target.nextSibling.hidden = false;
     }
     this.alquileres.push(Number(id));
+    this.ID_Movies.push(Number(id));
 
   }
 

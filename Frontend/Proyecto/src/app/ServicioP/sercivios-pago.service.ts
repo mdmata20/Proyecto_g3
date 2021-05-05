@@ -20,14 +20,6 @@ export class SerciviosPagoService {
   Api_pagos ="http://34.72.43.127:3000/BlockBusted/pago"
 
   //Pagos de un usuario en especifico 
-  GetPagos(Id_usuario:string){
-    return this.Http_pagos.post(this.Api_pagos, {
-      "Id_Usuario": Id_usuario
-    },
-    { headers: this.headers })
-    .pipe(map(data => data));
-  }
-
 
   MostrarPagos (Id_Alquiler:string, Id_Usuario:string){
     //console.log("alquiler" +Id_Alquiler);
@@ -38,8 +30,7 @@ export class SerciviosPagoService {
       "Id_Usuario": Id_Usuario,
       "Id_Alquiler": Id_Alquiler
     },
-    { headers: this.headers })
-    .pipe(map(data => data));
+    { headers: this.headers });
     
   }
 
@@ -63,7 +54,6 @@ export class SerciviosPagoService {
         "Apagar": Monto_apagar,
         "Moneda": Modena_apagar
       },
-      { headers: this.headers })
-      .pipe(map(data => data));
+      { headers: this.headers });
   }
 }

@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
-import { HomeComponent } from './components/home/home.component';
 import { PagoPeliculasComponent } from './components/pago-peliculas/pago-peliculas.component';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { UsuarioAdminComponent } from './components/usuario-admin/usuario-admin.component';
@@ -23,7 +22,6 @@ import { MisTransaccionesComponent } from './components/mis-transacciones/mis-tr
     UsuarioComponent,
     LoginComponent,
     RegistroComponent,
-    HomeComponent,
     PagoPeliculasComponent,
     CatalogoComponent,
     UsuarioAdminComponent,

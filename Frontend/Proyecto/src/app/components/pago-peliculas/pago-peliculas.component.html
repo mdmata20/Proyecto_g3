@@ -7,22 +7,22 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom"
-                        href="https://twitter.com/CreativeTim" target="_blank">
-                        <i class="fa fa-twitter"></i>
+                    href="/Catalogo" target="_blank">
+                        <em class="fa fa-twitter"></em>
                         <p class="d-lg-none">Twitter</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom"
-                        href="https://www.facebook.com/CreativeTim" target="_blank">
-                        <i class="fa fa-facebook-square"></i>
+                    href="/Catalogo" target="_blank">
+                        <em class="fa fa-facebook-square"></em>
                         <p class="d-lg-none">Facebook</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom"
-                        href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
-                        <i class="fa fa-instagram"></i>
+                        href="/Catalogo" target="_blank">
+                        <em class="fa fa-instagram"></em>
                         <p class="d-lg-none">Instagram</p>
                     </a>
                 </li>
@@ -30,8 +30,6 @@
         </div>
     </div>
 </nav>
-
-
 
 
 <div class="wrapper">
@@ -50,7 +48,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <input [(ngModel)]="Num_Tarjeta"  type="password" class="form-control" placeholder="Numero Tarjeta"
+                            <input [(ngModel)]="Num_Tarjeta" id="Num_Tarjeta" type="text" class="form-control" placeholder="Numero Tarjeta"
                             onkeypress='return event.charCode >= 48 && event.charCode <= 57'
                             >
                         </div>
@@ -63,7 +61,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                            <input [(ngModel)]="Nombre_Tarjeta" type="text" class="form-control" placeholder="Nombre de la tarjeta"
+                            <input [(ngModel)]="Nombre_Tarjeta" id="Nombre_Tarjeta" type="text" class="form-control" placeholder="Nombre de la tarjeta"
                             onkeypress='return (event.charCode >= 67 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) ||event.charCode == 32'>
                         </div>
                     </div>
@@ -73,7 +71,7 @@
                         <h6> Fecha Vencimiento</h6>
                     </div>
                     <div class="col-md-4">
-                        <input [(ngModel)]="FechaVencimiento" type="text" class="form-control" placeholder="Fecha de Vencimiento MM/YY"
+                        <input [(ngModel)]="FechaVencimiento" id = "FechaVencimiento" type="text" class="form-control" placeholder="Fecha de Vencimiento MM/YY"
                         onkeypress='return (event.charCode >= 47 && event.charCode <= 57)'>
                     </div>
                 </div>
@@ -84,7 +82,7 @@
                         <h6> Codigo de Verificacion</h6>
                     </div>
                     <div class="col-md-4">
-                        <input [(ngModel)]="CodigoVerficacion" type="text" class="form-control" placeholder="XXX"
+                        <input [(ngModel)]="CodigoVerficacion" id="CodigoVerficacion" type="text" class="form-control" placeholder="XXX"
                         onkeypress='return event.charCode >= 47 && event.charCode <= 57'
                         >
                     </div>
@@ -96,7 +94,7 @@
                         <h6>Moneda</h6>
                     </div>
                     <div class="col-md-4">
-                        <select [(ngModel)]="Moneda2" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect"
+                        <select [(ngModel)]="Moneda2" id="Moneda2" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect"
                         (change)="CapturarMoneda()">
                             <option selected>Moneda..</option>
                             <option value="1">Quetzal</option>
@@ -119,9 +117,9 @@
                        
                     </div>
                     <div class="col-md-4">
-                        <button (click)="Verificardor()"type="button" class="btn btn-outline-success btn-round">Pagar</button>
-                        <button type="button" class="btn btn-outline-danger btn-round">Cancelar</button>
-                        <button (click)="GetTotal()" type="button" class="btn btn-outline-danger btn-round">Actualizar</button>
+                        <button (click)="Verificardor()"type="button" id ="Pagar" class="btn btn-outline-success btn-round">Pagar</button>
+                        <button (click)="Salir()" type="button" id ="Cancelar" class="btn btn-outline-danger btn-round">Cancelar</button>
+                        <button (click)="GetTotal()" id ="Actualizar" type="button" class="btn btn-outline-danger btn-round">Actualizar</button>
                     </div>
                 </div>
             </div>

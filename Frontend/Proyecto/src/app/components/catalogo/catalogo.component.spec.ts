@@ -59,6 +59,16 @@ describe('CatalogoComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('ngOnInit()',() => {
+    let catalogo = spyOn(component, 'ngOnInit').and.callFake(() => {
+      return Rx.of([]).pipe(delay(100));
+    });
+    component.ngOnInit();
+    tick(100);
+    expect(component.ngOnInit).toBeTruthy();
+
+  });
+
   it("validar sessionStorage", function() {
     spyOn(window.sessionStorage, 'setItem');
     window.sessionStorage.setItem('correo', 'password');

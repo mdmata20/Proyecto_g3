@@ -96,9 +96,21 @@ describe('PagoPeliculasComponent', () => {
     done();
   });
 
-  it('Pruebas Input Numero de Tarjeta',  async(done) => {
+  it('Pruebas Input Numero de Tarjeta (Correcto)',  async(done) => {
     component.Num_Tarjeta = "1234567890123456";
     expect(component.Num_Tarjeta.length).toBe(16);
+    done();
+  });
+
+  it('Pruebas Input Numero de Tarjeta (Incorrecto)',  async(done) => {
+    component.Num_Tarjeta = "484651356130";
+    expect(component.Num_Tarjeta.length).toBe(16);
+    done();
+  });
+
+  it('Pruebas Input Encriptacion Tarjeta',  async(done) => {
+    component.Num_Tarjeta = "XXXX56789012XXXX";
+    expect(component.Num_Tarjeta).toMatch["[X|x]{4}[0-9]{8}[X|x]{4}"];
     done();
   });
 

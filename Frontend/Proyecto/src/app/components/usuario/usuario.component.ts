@@ -35,8 +35,8 @@ export class UsuarioComponent implements OnInit {
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
 
-      
   }
+
   checksessionStorage(){
     if(sessionStorage.getItem('id_usuario') == null){ // dashboard atleta
       this.router.navigateByUrl('/login');
@@ -94,6 +94,7 @@ export class UsuarioComponent implements OnInit {
         
     });
   }
+/*
   sidebarOpen() {
     const toggleButton = this.toggleButton;
     const html = document.getElementsByTagName('html')[0];
@@ -107,6 +108,7 @@ export class UsuarioComponent implements OnInit {
 
     this.sidebarVisible = true;
 };
+
 sidebarClose() {
     const html = document.getElementsByTagName('html')[0];
     // console.log(html);
@@ -114,6 +116,7 @@ sidebarClose() {
     this.sidebarVisible = false;
     html.classList.remove('nav-open');
 };
+
 sidebarToggle() {
     // const toggleButton = this.toggleButton;
     // const body = document.getElementsByTagName('body')[0];
@@ -123,6 +126,7 @@ sidebarToggle() {
         this.sidebarClose();
     }
 };
+
 isHome() {
   var titlee = this.location.prepareExternalUrl(this.location.path());
   if(titlee.charAt(0) === '#'){
@@ -147,5 +151,6 @@ isDocumentation() {
         return false;
     }
 }
+*/
 
 }

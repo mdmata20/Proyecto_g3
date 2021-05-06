@@ -1,68 +1,91 @@
-import { Component, OnInit } from '@angular/core';
-import { UsersService} from '../../Servicios/login.services';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UsersService } from '../../Servicios/login.services';
 import swal from'sweetalert2';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-
-
 export class LoginComponent implements OnInit {
-  test : Date = new Date();
-  focus: any;
-  focus1: any ;
+  submitted = false;
+  authError = false;
+  authErrorMsg: string;
+  islogon =false;
 
-  email: string="";
-  password: string="";
-  constructor(public UsersService: UsersService,  public router: Router) { }
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private loginService: UsersService
+  ) {
 
-  ngOnInit(): void {
-    this.checksessionStorage();  
   }
-  
-  checksessionStorage(){
-    if(sessionStorage.getItem('id_usuario') == null){ // dashboard atleta
-      this.router.navigateByUrl('/login');
+
+  loginForm = this.formBuilder.group({
+    email: ['', Validators.required],
+    password: ['', Validators.required]
+  });
+  ngOnInit() {}
+
+  get f() {
+    return this.loginForm.controls;
+  }
+
+  onSubmit(loginData) {
+
+    this.submitted = true;
+    if (this.loginForm.invalid) {
+      return;
     }
-  }
+    
+    const userloginBody = {
+      email: loginData.email,
+      password: loginData.password
+    };
 
-  login() {
-    const user = {email: this.email, password: this.password};
-    this.UsersService.login(user).subscribe( data => {
-      if(data.text=='Sesión Iniciada, Correctamente.'){
-        swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: data.text,
-          showConfirmButton: false,
-          timer: 1500
-        })
-        sessionStorage.setItem("email",this.email);
-        sessionStorage.setItem("password",this.password);
-        sessionStorage.setItem("id_usuario", data.id_usuario)
-        this.router.navigateByUrl('/Catalogo');
-      }
-      else{
-        swal.fire({
+
+    // Pending API call and logic handling
+    var prueba=this.loginService.login(userloginBody)
+      .then((data) => {
+        if(data.text=='Sesión Iniciada, Correctamente.'){
+          this.islogon=true;
+          /*swal.fire({
             position: 'top-end',
-            icon: 'error',
+            icon: 'success',
             title: data.text,
             showConfirmButton: false,
             timer: 1500
-          })
-      }
-        
-    });
+          })*/
+          sessionStorage.setItem("email",userloginBody.email);
+          sessionStorage.setItem("password",userloginBody.password);
+          sessionStorage.setItem("id_usuario", data.id_usuario)
+          this.router.navigateByUrl('/Catalogo');
+          return true;
+        }
+        else{
+          swal.fire({
+              position: 'top-end',
+              icon: 'error',
+              title: data.text,
+              showConfirmButton: false,
+              timer: 1500
+            })
+        }
+      })
+      .catch((reason) => {
+        // Failed login
+        this.authError = true;
+        this.authErrorMsg = reason;
+      });
+
+  
   }
 
   Registro(){
     this.router.navigateByUrl('/registro');
   }
   
-
-
 }

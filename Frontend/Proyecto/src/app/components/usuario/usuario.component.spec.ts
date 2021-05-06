@@ -63,7 +63,41 @@ describe('UsuarioComponent', () => {
     expect(""+component.guardar()).toEqual("Cambios Guardados.");
   })
 
-
+  var luser= {
+    "text": "caracteristicas",
+    "usuario": [
+        {
+            "id_usuario": 1,
+            "Usuario": "mdmata",
+            "Correo": "matalejandro18@gmail.com",
+            "Contraseña": "5470",
+            "Nombres": "Manuel",
+            "Apellidos": "De Mata",
+            "DPI": 54721,
+            "Edad": 23
+        }
+    ]
+};
+  it('Obtener lista de usuario', () => {
+    component.getuser= jasmine.createSpy().and.callFake(function(){
+      return {
+        "text": "caracteristicas",
+        "usuario": [
+            {
+                "id_usuario": 1,
+                "Usuario": "mdmata",
+                "Correo": "matalejandro18@gmail.com",
+                "Contraseña": "5470",
+                "Nombres": "Manuel",
+                "Apellidos": "De Mata",
+                "DPI": 54721,
+                "Edad": 23
+            }
+        ]
+    };
+    });
+    expect(component.getuser()[0]).toBe(luser[0]);
+  })
 
   /*
   it('Login Button Click', fakeAsync(() => {

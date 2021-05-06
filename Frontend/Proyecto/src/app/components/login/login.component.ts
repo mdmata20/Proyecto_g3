@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   submitted = false;
   authError = false;
   authErrorMsg: string;
-  islogon =false;
 
   constructor(
     private router: Router,
@@ -48,10 +47,9 @@ export class LoginComponent implements OnInit {
 
 
     // Pending API call and logic handling
-    var prueba=this.loginService.login(userloginBody)
+    this.loginService.login(userloginBody)
       .then((data) => {
         if(data.text=='Sesión Iniciada, Correctamente.'){
-          this.islogon=true;
           /*swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -63,7 +61,7 @@ export class LoginComponent implements OnInit {
           sessionStorage.setItem("password",userloginBody.password);
           sessionStorage.setItem("id_usuario", data.id_usuario)
           this.router.navigateByUrl('/Catalogo');
-          return true;
+
         }
         else{
           swal.fire({

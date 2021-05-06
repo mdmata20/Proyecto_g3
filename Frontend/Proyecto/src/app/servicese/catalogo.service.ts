@@ -17,6 +17,7 @@ export class CatalogoService {
     return this.http.get(`${this.API_URL}`)
   }
 
+
   deleteCatalogo(id_Movie: string){
     return this.http.delete(`${this.API_URL}/${id_Movie}`)
   }
@@ -28,4 +29,17 @@ export class CatalogoService {
   Inventario(){
     return this.http.get(`${this.API_URL}/${sessionStorage.getItem('id_usuario')}`)
   }
+/*
+  Inventario2(){
+    //return this.http.get(`${this.API_URL}`)
+    return new Promise((resolve, reject) => {
+      this.http.get(`${this.API_URL}/${sessionStorage.getItem('id_usuario')}`)
+        .toPromise()
+        .then((res: Catalogo) => {
+           resolve(res);
+        }).catch((err) => {
+          reject(err.error.message);
+        });
+    });
+  }*/
 }

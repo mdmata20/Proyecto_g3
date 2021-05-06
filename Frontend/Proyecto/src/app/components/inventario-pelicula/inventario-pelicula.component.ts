@@ -20,6 +20,7 @@ export class InventarioPeliculaComponent implements OnInit {
   constructor(public UsersService: UsersService, private catalogoServices: CatalogoService,  public router: Router) {
   } 
   ngOnInit(): void {
+    
     this.catalogoServices.Inventario().subscribe(
       res => { 
           let exist = false;
@@ -38,11 +39,36 @@ export class InventarioPeliculaComponent implements OnInit {
                 }
                 this.catalogo.push(temporalsito);
               }
-              console.log(res);
+              //console.log(res);
           });
         },     
       err => console.log(err)
     );
+/*
+    var prueba=this.catalogoServices.Inventario2()
+    .then((data) => {
+      let exist = false;
+      //@ts-ignore
+      let temp: any = data;
+      //@ts-ignore
+      temp.forEach(element => {
+        if(!exist)
+          {
+            let temporalsito = {
+              id: element.id_Movie,
+              name: element.name,
+              Precio: element.ChargeRate,
+              image: element.image == 'URL'? 'https://firebasestorage.googleapis.com/v0/b/wannan-1b398.appspot.com/o/halo-infinite-202072216173826_2.jpg?alt=media&token=ae41a99e-2fbf-4e38-8f61-e2d977a45d6f': element.image,
+              usuario_actual: element.usuario_actual
+            }
+            this.catalogo.push(temporalsito);
+          }
+          //console.log(data);
+      });
+    })
+    .catch((reason) => {
+      //console.log(reason)
+    });*/
       this.checksessionStorage();
   }
 

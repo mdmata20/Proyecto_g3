@@ -15,7 +15,7 @@ describe('SerciviosPagoService', () => {
       providers: [SerciviosPagoService]
     });
     service = TestBed.inject(SerciviosPagoService);
-    //httpcliente = TestBed.inject(HttpClient);
+
     httpMock = TestBed.get(HttpTestingController);
   });
 

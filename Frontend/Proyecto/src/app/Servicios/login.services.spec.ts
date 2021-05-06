@@ -58,9 +58,23 @@ describe('LoginComponent', () => {
     expect(service).toBeTruthy();
   }));
   
-  const login = { username: 'eoguamuch94@gmail.com', password: '123' };
+  const login = { email: 'eoguamuch94@gmail.com', password: '123' };
+  /*
   it('Iniciar sesion', () => {
     service.login(login).subscribe(
+      (seguro)=>
+      {
+        expect(seguro).length > 1;
+      }
+    );
+    const req = httpMock.expectOne(url+"/login");
+    expect(req.request.method).toBe('POST');
+    httpMock.verify();
+  });
+  */
+
+  it('Iniciar sesion', () => {
+    service.login(login).then(
       (seguro)=>
       {
         expect(seguro).length > 1;

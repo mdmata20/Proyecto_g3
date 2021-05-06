@@ -18,35 +18,42 @@
                                   <em class="fa fa-twitter"></em>
                               </a>
                           </div>
-                          <form class="register-form" >
-                              <label>Correo Electronico </label>
-                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                      <em class="nc-icon nc-email-85"></em>
-                                  </span>
-                                </div>
 
-                                  <input type="text" class="form-control" placeholder="Correo Electronico" (focus)="focus=true" (blur)="focus=false" [(ngModel)]="email" name="email">
-                              </div>
 
-                              <label>Contraseña </label>
-                              <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus1===true}">
-                                <div class="input-group-prepend">
-                                  <span class="input-group-text">
-                                      <em class="nc-icon nc-key-25"></em>
-                                  </span>
-                                </div>
-                                  <input type="text" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" [(ngModel)]="password" name="password">
-                              </div>
-                              <button class="btn btn-danger btn-block btn-round"  (click)="login()">Iniciar</button>
-                              <button class="btn btn-danger btn-block btn-round"  (click)="Registro()">Registro</button>
-                          </form>
+
+                        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+                            <div id="username-container">
+                                    <label>Username</label>
+                                    <input matInput placeholder="Username"
+                                    formControlName="email" class="form-control" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                            </div>
+                            <div id="password-container">
+                                    <label>Password</label>
+                                    <input matInput placeholder="Password" type="password"
+                                        formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
+                            </div>
+
+
+                            <div id="username-error-msg" *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                <div id="blank-username-error" *ngIf="f.email.errors.required" style="color:red">Please enter email.</div>
+                            </div>
+                        
+                            <div id="password-error-msg" *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                <div id="blank-password-error" *ngIf="f.password.errors.required" style="color:red">Please enter password.</div>
+                            </div>
+                        
+                            <div id="login-btn-container" class="form-group">
+                                <button class="btn btn-danger btn-block btn-round">Login</button>                            
+                            </div>
+                        </form>
+                        <button class="btn btn-danger btn-block btn-round"  (click)="Registro()" id="btnregistro">Registro</button>
+                          
                       </div>
                     </div>
                 </div>
                 <div class="footer register-footer text-center">
-                    <h6>&copy;{{test | date: 'yyyy'}}, made with <em class="fa fa-heart heart"></em> by Grupo 3 AYD1</h6>
+                    <h6> <em class="fa fa-heart heart"></em> by Grupo 3 AYD1</h6>
                 </div>
             </div>
     </div>
